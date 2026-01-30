@@ -81,10 +81,7 @@ def train(msg: Message, context: Context):
     # Do local training
     results = trainer.train()
 
-    # ==========================
-    # 🔍 插入打印逻辑开始
-    # ==========================
-    
+    # ==========================打印上传参数的调试信息==========================
     # 1. 先把参数字典提取出来，存到一个变量里
     # 这里的 raw_params 就是你要加密的“原生对象”
     raw_params = get_peft_model_state_dict(model)
@@ -113,7 +110,8 @@ def train(msg: Message, context: Context):
     print(f"📈 本次上传总参数数量: {total_elements}")
     print(f"📦 预估数据大小 (BF16): {total_elements * 2 / 1024 / 1024 :.2f} MB")
     print("="*50 + "\n")
-    
+    # ==========================打印上传参数的调试信息==========================
+
 
     # Construct and return reply Message
     model_record = ArrayRecord(get_peft_model_state_dict(model))
