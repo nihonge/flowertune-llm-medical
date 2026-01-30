@@ -81,6 +81,40 @@ def train(msg: Message, context: Context):
     # Do local training
     results = trainer.train()
 
+    # ==========================
+    # 🔍 插入打印逻辑开始
+    # ==========================
+    
+    # 1. 先把参数字典提取出来，存到一个变量里
+    # 这里的 raw_params 就是你要加密的“原生对象”
+    raw_params = get_peft_model_state_dict(model)
+
+    print("\n" + "="*50)
+    print(f"🕵️ [Client Debug] 正在检查待上传参数 (Type: {type(raw_params)})")
+    print(f"📊 总共包含 {len(raw_params)} 个张量 (Tensors)")
+    print("-" * 50)
+
+    # 2. 遍历打印前 5 个参数的详情（防止刷屏，只看前几个）
+    count = 0
+    total_elements = 0
+    for key, tensor in raw_params.items():
+        # 统计总参数量
+        total_elements += tensor.numel()
+        
+        # 打印部分 Key 的形状
+        if count < 5: 
+            print(f"🔑 Key: {key}")
+            print(f"   📏 Shape: {tensor.shape}") # 比如 [32, 4096]
+            print(f"   💾 Dtype: {tensor.dtype}") # 比如 torch.float32
+            print(f"   🧪 Device: {tensor.device}")
+            print("-" * 20)
+        count += 1
+    
+    print(f"📈 本次上传总参数数量: {total_elements}")
+    print(f"📦 预估数据大小 (BF16): {total_elements * 2 / 1024 / 1024 :.2f} MB")
+    print("="*50 + "\n")
+    
+
     # Construct and return reply Message
     model_record = ArrayRecord(get_peft_model_state_dict(model))
     metrics = {
