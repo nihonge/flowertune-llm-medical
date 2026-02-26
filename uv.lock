@@ -581,6 +581,7 @@ dependencies = [
     { name = "peft" },
     { name = "scipy" },
     { name = "sentencepiece" },
+    { name = "tenseal" },
     { name = "torch" },
     { name = "transformers" },
     { name = "trl" },
@@ -597,6 +598,7 @@ requires-dist = [
     { name = "peft", specifier = "==0.6.2" },
     { name = "scipy", specifier = "==1.13.0" },
     { name = "sentencepiece", specifier = "==0.2.0" },
+    { name = "tenseal", specifier = ">=0.3.16" },
     { name = "torch", specifier = "==2.9.1" },
     { name = "transformers", specifier = "==4.53.0" },
     { name = "trl", specifier = "==0.8.1" },
@@ -2643,6 +2645,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/83/d3/803453b36afefb7c2bb238361cd4ae6125a569b4db67cd9e79846ba2d68c/sympy-1.14.0.tar.gz", hash = "sha256:d3d3fe8df1e5a0b42f0e7bdf50541697dbe7d23746e894990c030e2b05e72517", size = 7793921 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl", hash = "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5", size = 6299353 },
+]
+
+[[package]]
+name = "tenseal"
+version = "0.3.16"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f9/59/13078c5a6c22d5604f1a266d1b3b8d94e441b8b8c3ec1999b721047b3dfb/tenseal-0.3.16-cp312-cp312-macosx_13_0_x86_64.whl", hash = "sha256:634911a38d90ca89f33f81088c83ccd62b7fe441e0d6f84ab801e411e3060915", size = 4006854 },
+    { url = "https://files.pythonhosted.org/packages/3d/34/38eabf9e6362abd008e24a411a4baa2f7baf2f2b337e5d7cc68c87e7f4f1/tenseal-0.3.16-cp312-cp312-macosx_14_0_arm64.whl", hash = "sha256:d5f0cce84f7a4c27324507867ff3c1495164f100570e88b62d72d4698560cd20", size = 3444844 },
+    { url = "https://files.pythonhosted.org/packages/e1/88/759a9170828cea917d560f08b53698c3e2e735614193447630317d328f67/tenseal-0.3.16-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:20b52be596b0c3b6c77df021b91eafd8eda6ef79a2358748aec0ec32e77778cf", size = 4788477 },
+    { url = "https://files.pythonhosted.org/packages/0a/cc/3817db86afaf61c6b7da458a3551ee270338f444dae5b2b8d50efaca0863/tenseal-0.3.16-cp312-cp312-win_amd64.whl", hash = "sha256:f77c3931eaca88364895c20144d22242a4eea7e20ae6623d1694cde5f45205dc", size = 2159924 },
+    { url = "https://files.pythonhosted.org/packages/05/37/7b45b3458d203486a9efad3b67c5f02085aa01554ee2a3cddbb47b0281a6/tenseal-0.3.16-cp313-cp313-macosx_13_0_x86_64.whl", hash = "sha256:884350410577ce355394e3bc557524b55689b47830d4aaf41d48295f5399ee84", size = 4006835 },
+    { url = "https://files.pythonhosted.org/packages/c3/04/babe107997408b967d6259ce61a068f3c8aa50a022f1f337c96eb1cec6dc/tenseal-0.3.16-cp313-cp313-macosx_14_0_arm64.whl", hash = "sha256:1cee5bf1acc69ddf23be2983e7dcfde1f7f7032dd51451dae8ea49f18e158321", size = 3444741 },
+    { url = "https://files.pythonhosted.org/packages/ec/7f/507c250da88824434636733d53c4464c8e9f210450493f634b9052b0ec58/tenseal-0.3.16-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:4d3941cafb9ded865ac1d7080304788c8789865bf68e6d229486872e5340fc82", size = 4789947 },
+    { url = "https://files.pythonhosted.org/packages/e4/9f/fe14dc2a1b1d5ddbbae18d3e9e17fb661339f369c895285533dfd2e70134/tenseal-0.3.16-cp313-cp313-win_amd64.whl", hash = "sha256:490c76b5d081e9dec17c88003b045b43d30db738b8031cc1620a29f118504fb8", size = 2159814 },
 ]
 
 [[package]]
