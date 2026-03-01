@@ -7,7 +7,7 @@ from flwr.app import ArrayRecord, ConfigRecord, Context, MetricRecord
 from flwr.common.config import unflatten_dict
 from flwr.serverapp import Grid, ServerApp
 from omegaconf import DictConfig
-from peft import get_peft_model_state_dict, set_peft_model_state_dict
+from peft import get_peft_model_state_dict
 
 from flowertune_medical.dataset import replace_keys
 from flowertune_medical.models import get_model
@@ -55,19 +55,16 @@ def main(grid: Grid, context: Context) -> None:
 # Get function that will be executed by the strategy
 # Here we use it to save global model checkpoints
 def get_evaluate_fn(model_cfg, save_every_round, total_round, save_path):
-    """Return an evaluation function for saving global model."""
+    """在全同态加密框架下，Server 无法解密模型，因此仅记录聚合完成的状态。"""
 
     def evaluate(server_round: int, arrays: ArrayRecord) -> MetricRecord:
-        # Save model
-        if server_round != 0 and (
-            server_round == total_round or server_round % save_every_round == 0
-        ):
-            # Init model
-            model = get_model(model_cfg)
-            set_peft_model_state_dict(model, arrays.to_torch_state_dict())
-
-            model.save_pretrained(f"{save_path}/peft_{server_round}")
-
+        print(f"\n🛡️ [Server] 轮次 {server_round} 评估阶段。")
+        print(f"🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。")
+        print(f"🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。")
+        
+        # 我们不再尝试将 arrays 转成 PyTorch 字典进行保存，因为它现在是空的
+        # 全局密文的生成、CID 的分发都已经在 Strategy 的 aggregate_fit 中完成了
+        
         return MetricRecord()
 
     return evaluate

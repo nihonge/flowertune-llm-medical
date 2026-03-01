@@ -2,7 +2,8 @@
 
 import os
 import shutil
-import torch
+import pickle
+import time
 from collections.abc import Iterable
 from logging import INFO, WARN
 from typing import Optional
@@ -13,173 +14,13 @@ from flwr.serverapp import Grid
 from flwr.serverapp.strategy import FedAvg
 from flwr.server.strategy.aggregate import aggregate
 from flowertune_medical.ipfs_handler import IPFSHandler
-
-
-class FlowerTuneLlm(FedAvg):
-    """Customised FedAvg strategy implementation.
-
-    This class behaves just like FedAvg but also tracks the communication
-    costs associated with `train` over FL rounds.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.comm_tracker = CommunicationTracker()
-        self.ipfs = IPFSHandler()
-
-    def configure_train(
-        self, server_round: int, arrays: ArrayRecord, config: ConfigRecord, grid: Grid
-    ) -> Iterable[Message]:
-        """Configure the next round of training."""
-        messages = super().configure_train(server_round, arrays, config, grid)
-
-        # Track communication costs
-        self.comm_tracker.track(messages)
-
-        return messages
-
-    def aggregate_train(
-        self,
-        server_round: int,
-        replies: Iterable[Message],
-    ) -> tuple[Optional[ArrayRecord], Optional[MetricRecord]]:
-        """Aggregate ArrayRecords and MetricRecords in the received Messages."""
-        # Track communication costs
-        self.comm_tracker.track(replies)
-
-        weights_results = []
-        
-        # 1. [新增] 准备一个列表用来存 (loss, num_examples) <--- [修改点 1]
-        loss_results = [] 
-
-        # 定义本轮下载的临时根目录
-        download_base_dir = f"./server_tmp_round_{server_round}"
-        
-        # 用于保存参数的 Key (层名)，因为聚合函数会丢失 Key
-        parameter_keys = None 
-
-        print(f"\n📥 [Server] Round {server_round}: Processing {len(list(replies))} replies via IPFS...")
-
-        # 3. 遍历客户端回复
-        for msg in replies:
-            if not msg.has_content():
-                continue
-            # 1. 取 Metrics (数字)
-            # 注意：RecordDict 在 Server 端解析时，通常可以通过 key 访问
-            # msg.content 是一个 RecordSet (或 RecordDict)
-            
-            # 获取 metrics 里的 num_examples
-            # 假设你在 client 里用的 key 是 "metrics"
-            if "metrics" in msg.content.metric_records:
-                metrics_rec = msg.content.metric_records["metrics"]
-                num_examples = metrics_rec.get("num_examples", 1)
-                
-                # 2. [新增] 提取 Client 传回来的 train_loss <--- [修改点 2]
-                # 默认值给 0.0 防错
-                client_loss = metrics_rec.get("train_loss", 0.0) 
-            else:
-                num_examples = 1
-                client_loss = 0.0
-
-            # 2. 取 Configs (字符串 CID)
-            # 👇 修正：从 config_records 中读取
-            cid = "FAIL"
-            if "configs" in msg.content.config_records:
-                config_rec = msg.content.config_records["configs"]
-                # ConfigRecord 获取值
-                cid = config_rec.get("ipfs_cid", "FAIL")
-
-            if cid == "FAIL" or cid == "UPLOAD_FAILED":
-                continue
-
-            # 4. 通过 IPFS 下载
-            if self.ipfs.download(cid, download_base_dir):
-                # ipfs.get 会在 download_base_dir 下创建以 CID 命名的文件夹
-                model_folder = os.path.join(download_base_dir, cid)
-                
-                # 寻找参数文件 (兼容 .bin 和 .safetensors)
-                bin_path = os.path.join(model_folder, "adapter_model.bin")
-                safe_path = os.path.join(model_folder, "adapter_model.safetensors")
-                
-                state_dict = None
-                try:
-                    if os.path.exists(safe_path):
-                        from safetensors.torch import load_file
-                        state_dict = load_file(safe_path, device="cpu")
-                    elif os.path.exists(bin_path):
-                        state_dict = torch.load(bin_path, map_location="cpu")
-                    
-                    if state_dict:
-                        # 记录 Keys (只需要记录一次，假设所有 Client 模型结构一致)
-                        if parameter_keys is None:
-                            parameter_keys = list(state_dict.keys())
-
-                        # 提取 Values 并转为 Numpy (Flower 聚合必须用 Numpy)
-                        # 注意：保持顺序一致
-                        param_vals = [v.cpu().numpy() for v in state_dict.values()]
-                        weights_results.append((param_vals, num_examples))
-                        
-                        # 3. [新增] 只有下载成功才记录 Loss，用于后续计算平均值 <--- [修改点 3]
-                        loss_results.append((client_loss, num_examples))
-                        
-                except Exception as e:
-                    log(WARN, f"Failed to load model from CID {cid}: {e}")
-            else:
-                log(WARN, f"Failed to download CID {cid}")
-
-        # 5. 清理下载的临时文件 (节省服务器空间)
-        shutil.rmtree(download_base_dir, ignore_errors=True)
-
-        # 6. 执行聚合
-        # 如果没有成功下载任何模型，直接返回空
-        if not weights_results:
-            return None, {}
-
-        log(INFO, f"🔄 [Server] Aggregating {len(weights_results)} models...")
-        
-        # 调用 Flower 底层数学函数进行加权平均
-        # aggregated_values 是一个 list of numpy arrays
-        aggregated_values = aggregate(weights_results)
-        
-        # 7. 重构 ArrayRecord
-        # 我们必须把 List 重新映射回 Dictionary (Key: Value)
-        # 这样下一轮 distribute 的时候，Client 才能通过 load_state_dict 加载
-        if parameter_keys is None:
-            log(WARN, "Parameter keys lost during aggregation!")
-            return None, {}
-
-        aggregated_dict = {
-            k: Array(v) for k, v in zip(parameter_keys, aggregated_values)
-        }
-        
-        arrays = ArrayRecord(aggregated_dict)
-        
-        # 4. [新增/修改] 手动计算聚合后的 Metrics (Loss) <--- [修改点 4]
-        # =========================================================
-        aggregated_metrics = {}
-        
-        if loss_results:
-            # 计算加权平均 Loss: sum(loss * num) / sum(num)
-            total_examples = sum(num for _, num in loss_results)
-            if total_examples > 0:
-                weighted_loss = sum(loss * num for loss, num in loss_results) / total_examples
-                aggregated_metrics["train_loss"] = weighted_loss
-                # 打印到控制台，让你直接看到结果
-                log(INFO, f"📊 [Server] Round {server_round} Aggregated Loss: {weighted_loss:.4f}")
-        
-        # 将计算好的字典放入 MetricRecord
-        metrics = MetricRecord(aggregated_metrics) 
-        # =========================================================
-
-        return arrays, metrics
+import tenseal as ts
 
 class CommunicationTracker:
-    # ... (保持不变) ...
     def __init__(self):
         self.curr_comm_cost = 0.0
 
     def track(self, messages: Iterable[Message]):
-        # ... (保持不变) ...
         comm_cost = (
             sum(
                 record.count_bytes()
@@ -197,3 +38,176 @@ class CommunicationTracker:
             self.curr_comm_cost,
             comm_cost,
         )
+
+
+class FlowerTuneLlm(FedAvg):
+    """FHE-enabled Strategy."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.comm_tracker = CommunicationTracker()
+        self.ipfs = IPFSHandler()
+        # 🌟 核心修复 1：用实例变量存下最新的 CID
+        self.current_global_cid = "FAIL"
+
+    def configure_train(
+        self, server_round: int, arrays: ArrayRecord, config: ConfigRecord, grid: Grid
+    ) -> Iterable[Message]:
+        """Configure the next round of training."""
+        
+        # 🌟 核心修复 2：在给 Client 发送配置前，强行把上一轮的 CID 塞进 config
+        # 注意：第一轮时这里是 "FAIL"，到了第二轮就会变成真实的 CID
+        config["global_ipfs_cid"] = self.current_global_cid
+        
+        messages = super().configure_train(server_round, arrays, config, grid)
+        self.comm_tracker.track(messages)
+        return messages
+
+    def aggregate_train(
+        self,
+        server_round: int,
+        replies: Iterable[Message],
+    ) -> tuple[Optional[ArrayRecord], Optional[MetricRecord]]:
+        """Aggregate Encrypted Models via Homomorphic Addition."""
+        self.comm_tracker.track(replies)
+
+        loss_results = [] 
+        download_base_dir = f"./server_tmp_round_{server_round}"
+        os.makedirs(download_base_dir, exist_ok=True)
+        
+        # 存放所有客户端下载下来的密文数据
+        client_encrypted_data = []
+
+        print(f"\n📥 [Server] Round {server_round}: Processing {len(list(replies))} replies via IPFS...")
+
+        # ==========================================
+        # 阶段 1：解析消息并下载密文
+        # ==========================================
+        for msg in replies:
+            if not msg.has_content():
+                continue
+            
+            # 提取 Metrics
+            if "metrics" in msg.content.metric_records:
+                metrics_rec = msg.content.metric_records["metrics"]
+                num_examples = metrics_rec.get("num_examples", 1)
+                client_loss = metrics_rec.get("train_loss", 0.0) 
+            else:
+                num_examples = 1
+                client_loss = 0.0
+
+            # 提取 CID (这里解析 Client 传回来的 CID)
+            cid = "FAIL"
+            if "configs" in msg.content.config_records:
+                config_rec = msg.content.config_records["configs"]
+                cid = config_rec.get("ipfs_cid", "FAIL")
+
+            if cid == "FAIL" or cid == "UPLOAD_FAILED":
+                continue
+
+            # 通过 IPFS 下载包含 FHE 密文的文件夹
+            if self.ipfs.download(cid, download_base_dir):
+                model_folder = os.path.join(download_base_dir, cid)
+                fhe_path = os.path.join(model_folder, "full_encrypted_model.pkl")
+                
+                try:
+                    if os.path.exists(fhe_path):
+                        print(f"🔒 [Server] 成功读取密文模型，来自 CID: {cid}")
+                        with open(fhe_path, "rb") as f:
+                            enc_data = pickle.load(f)
+                        client_encrypted_data.append((enc_data, num_examples))
+                        loss_results.append((client_loss, num_examples))
+                    else:
+                        log(WARN, f"🚨 密文文件 {fhe_path} 不存在！")
+                except Exception as e:
+                    log(WARN, f"Failed to load encrypted model from CID {cid}: {e}")
+            else:
+                log(WARN, f"Failed to download CID {cid}")
+
+        if not client_encrypted_data:
+            shutil.rmtree(download_base_dir, ignore_errors=True)
+            return None, {}
+
+        # ==========================================
+        # 阶段 2：全同态盲算聚合 (FedAvg)
+        # ==========================================
+        print(f"\n🔥 [Server] 启动同态盲算引擎，准备聚合 {len(client_encrypted_data)} 个密文模型...")
+        start_time = time.time()
+        
+        first_client_data, _ = client_encrypted_data[0]
+        context_bytes = first_client_data["public_context"]
+        context = ts.context_from(context_bytes)
+        
+        layer_names = list(first_client_data["weights"].keys())
+        shapes_info = first_client_data["shapes"]
+        
+        total_examples = sum(num for _, num in client_encrypted_data)
+        
+        aggregated_encrypted_weights = {}
+
+        for layer_name in layer_names:
+            print(f"  -> 正在同态聚合: {layer_name} ...")
+            
+            first_enc_weight_bytes = first_client_data["weights"][layer_name]
+            first_weight = client_encrypted_data[0][1] / total_examples 
+            
+            accumulated_enc_tensor = ts.ckks_vector_from(context, first_enc_weight_bytes)
+            accumulated_enc_tensor.mul_(first_weight)
+
+            for client_data, num_examples in client_encrypted_data[1:]:
+                enc_weight_bytes = client_data["weights"][layer_name]
+                weight = num_examples / total_examples
+                
+                client_enc_tensor = ts.ckks_vector_from(context, enc_weight_bytes)
+                client_enc_tensor.mul_(weight)
+                
+                accumulated_enc_tensor.add_(client_enc_tensor)
+                
+            aggregated_encrypted_weights[layer_name] = accumulated_enc_tensor.serialize()
+
+        print(f"✅ [Server] 同态盲算聚合完成！总耗时: {time.time() - start_time:.2f} 秒")
+
+        # ==========================================
+        # 阶段 3：打包全局密文并回传 IPFS
+        # ==========================================
+        global_enc_data = {
+            "weights": aggregated_encrypted_weights,
+            "shapes": shapes_info,
+            "public_context": context_bytes 
+        }
+        
+        upload_dir = f"./server_upload_round_{server_round}"
+        os.makedirs(upload_dir, exist_ok=True)
+        global_pkl_path = os.path.join(upload_dir, "full_encrypted_model.pkl")
+        
+        print(f"💾 [Server] 正在打包全局密文，准备上传 IPFS (可能长达几个GB)...")
+        with open(global_pkl_path, "wb") as f:
+            pickle.dump(global_enc_data, f)
+            
+        print(f"☁️ [Server] 正在上传全局密文到 IPFS...")
+        global_cid = self.ipfs.upload_folder(upload_dir)
+        
+        if global_cid:
+             print(f"✅ [Server] 全局模型上传成功！Global CID: {global_cid}")
+             # 🌟 核心修复 3：更新当前类的 CID，这样下一轮的 configure_train 就能把这玩意发给 Client
+             self.current_global_cid = global_cid
+        else:
+             print("❌ [Server] 全局模型上传失败！")
+             self.current_global_cid = "UPLOAD_FAILED"
+
+        shutil.rmtree(download_base_dir, ignore_errors=True)
+        shutil.rmtree(upload_dir, ignore_errors=True)
+
+        # ==========================================
+        # 阶段 4：构造返回值
+        # ==========================================
+        aggregated_metrics = {}
+        if loss_results:
+            w_loss = sum(loss * num for loss, num in loss_results) / total_examples
+            aggregated_metrics["train_loss"] = w_loss
+            log(INFO, f"📊 [Server] Round {server_round} Aggregated Loss: {w_loss:.4f}")
+            
+        metrics = MetricRecord(aggregated_metrics) 
+        
+        # 返回空的数组和合并后的 metrics。我们不再需要把 CID 写进返回值里，因为前面已经存到了 self.current_global_cid
+        return ArrayRecord({}), metrics

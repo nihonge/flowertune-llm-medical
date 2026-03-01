@@ -11,7 +11,7 @@ from omegaconf import DictConfig
 from peft import get_peft_model_state_dict, set_peft_model_state_dict
 from transformers import TrainingArguments
 from trl import SFTTrainer
-from flowertune_medical.fhe_utils import FullFHEHandler # 🌟 [保留] 你已经加好的 FHE 工具箱导入
+from flowertune_medical.fhe_utils import FullFHEHandler 
 
 from flowertune_medical.dataset import (
     get_tokenizer_and_data_collator_and_propt_formatting,
@@ -24,7 +24,6 @@ from flowertune_medical.models import cosine_annealing, get_model
 os.environ["TOKENIZERS_PARALLELISM"] = "true"
 os.environ["RAY_DISABLE_DOCKER_CPU_WARNING"] = "1"
 warnings.filterwarnings("ignore", category=UserWarning)
-
 
 # 初始化 IPFS 处理器
 ipfs = IPFSHandler()
@@ -51,28 +50,67 @@ def train(msg: Message, context: Context):
         formatting_prompts_func,
     ) = get_tokenizer_and_data_collator_and_propt_formatting(cfg.model.name)
 
-    # Load the model and initialize it with the received weights
+    # Load the base model
     model = get_model(cfg.model)
-    set_peft_model_state_dict(model, msg.content["arrays"].to_torch_state_dict())
+
+    # ==========================================
+    # 🌟 接收全局 CID -> 下载密文 -> 解密 -> 加载
+    # ==========================================
+    global_cid = "FAIL"
+    
+    # 绝对安全的精准提取，不打印任何二进制！
+    if "config" in msg.content:
+        global_cid = msg.content["config"].get("global_ipfs_cid", "FAIL")
+    elif "configs" in msg.content:
+        global_cid = msg.content["configs"].get("global_ipfs_cid", "FAIL")
+
+    if global_cid != "FAIL" and global_cid != "UPLOAD_FAILED":
+        print(f"\n📥 [Client {partition_id}] 收到全局 CID: {global_cid}，准备下载密文...")
+        download_dir = tempfile.mkdtemp(prefix=f"flwr_client_{partition_id}_dl_")
+        
+        try:
+            if ipfs.download(global_cid, download_dir):
+                fhe_path = os.path.join(download_dir, global_cid, "full_encrypted_model.pkl")
+                if os.path.exists(fhe_path):
+                    # 1. 实例化加密工具（会自动读取同目录的 global_fhe_keys.pkl）
+                    fhe_handler = FullFHEHandler()
+                    
+                    # 2. 解密还原为 PyTorch 张量
+                    decrypted_state_dict = fhe_handler.decrypt_model(fhe_path)
+                    
+                    # 3. 将解密后的全局经验加载到本地模型中
+                    set_peft_model_state_dict(model, decrypted_state_dict)
+                    print(f"✅ [Client {partition_id}] 成功吸收 Server 端发来的全局聚合经验！")
+                else:
+                    print(f"🚨 [Client {partition_id}] 没找到密文文件: {fhe_path}")
+            else:
+                print(f"❌ [Client {partition_id}] IPFS 下载失败。")
+        except Exception as e:
+             print(f"❌ [Client {partition_id}] 解密加载失败: {e}")
+        finally:
+             shutil.rmtree(download_dir, ignore_errors=True)
+    else:
+        print(f"\n🆕 [Client {partition_id}] 未收到全局 CID (这是第1轮)，使用本地初始权重开局。")
+    # ==========================================
+
+    # 兼容获取 server_round 和 save_path
+    try:
+        current_round = msg.content["config"]["server-round"]
+        save_path_str = msg.content["config"]["save_path"]
+    except KeyError:
+        current_round = 1
+        save_path_str = f"./results/fallback_client_{partition_id}"
 
     # Set learning rate for current round
     new_lr = cosine_annealing(
-        msg.content["config"]["server-round"],
+        current_round,
         num_rounds,
         cfg.train.learning_rate_max,
         cfg.train.learning_rate_min,
     )
 
     training_arguments.learning_rate = new_lr
-    training_arguments.output_dir = msg.content["config"]["save_path"]
-
-    # ==========================================
-    # 🌟 [Debug 专用] 极速模式：强行把训练压缩到几秒钟！
-    # ==========================================
-    training_arguments.max_steps = 3         # 强制只训练 3 步 (原本可能是几百上千步)
-    training_arguments.num_train_epochs = 1  # 覆盖 epoch 设置
-    training_arguments.save_steps = 100      # 防止中途乱保存，全留到最后
-    # ==========================================
+    training_arguments.output_dir = save_path_str
 
     # Construct trainer
     trainer = SFTTrainer(
@@ -85,57 +123,34 @@ def train(msg: Message, context: Context):
         data_collator=data_collator,
     )
 
-    # ==========================================
-    # 🚀 开始训练 (🌟 [修改] 删除了重复的 trainer.train() 调用)
-    # ==========================================
-    # ⚠️ 忽略一些 Ray/HuggingFace 的警告
+    # 开始训练
+    print(f"🚀 [Client {partition_id}] 准备就绪，开始本地微调...")
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         train_results = trainer.train()
 
-    # 5. 保存参数并上传 IPFS
-    # ------------------------------------------------------------------
-    # 🌟 [终极修复] 强制向操作系统申请一个绝对存在的独立临时目录
+    # 保存参数并上传 IPFS
     temp_dir = tempfile.mkdtemp(prefix=f"flwr_client_{partition_id}_")
-    print(f"\n📁 [Client {partition_id}] 成功创建真实的物理路径: {temp_dir}")
-    
-    # HuggingFace 会在这里生成 adapter_model.safetensors (或 .bin) (明文)
-    # 🌟 [究极修复] 强制关闭 safetensors！保存为兼容性 100% 的 .bin 格式，绕过 OS Error 19！
     trainer.model.save_pretrained(temp_dir, safe_serialization=False)
     
-    # 🕵️ [抓鬼时刻] 强制打印文件夹里到底生成了什么！
     generated_files = os.listdir(temp_dir)
-    print(f"📦 [Client {partition_id}] save_pretrained 执行完毕。目录内文件: {generated_files}")
-    
     if not generated_files:
         raise RuntimeError(f"🚨 活见鬼了！HuggingFace 假装保存了，但文件夹 {temp_dir} 里是空的！")
     
-    # ==========================================
-    # 🌟 [新增] FHE 拦截与明文销毁逻辑 
-    # ==========================================
+    # 全同态加密拦截
     try:
-        print(f"🛡️ [Client {partition_id}] 准备启动全同态加密...")
         fhe_handler = FullFHEHandler()
-        
-        # 让工具类自己去找文件，并返回它真正加密的那个明文文件路径
         plaintext_file_to_delete = fhe_handler.encrypt_full_model(temp_dir, temp_dir)
-        
-        # 💣 极其关键：物理删除明文权重文件！
         if os.path.exists(plaintext_file_to_delete):
             os.remove(plaintext_file_to_delete)
             print(f"🗑️ [Client {partition_id}] 已彻底销毁本地明文权重: {plaintext_file_to_delete}")
-            
     except Exception as e:
         print(f"❌ [Client {partition_id}] 同态加密失败，中断上传！错误信息: {e}")
-        # 如果加密失败，直接抛出异常，绝对不能让明文传上去
         raise e
-    # ==========================================
 
-    # ☁️ 上传到 IPFS (此时文件夹里只有安全的密文 .pkl 和一些微小的配置 .json)
+    # 上传到 IPFS
     print(f"☁️ [Client {partition_id}] Uploading encrypted parameters to IPFS...")
     cid = ipfs.upload_folder(temp_dir)
-
-    # ✅ 修复 NameError：定义 safe_cid
     safe_cid = str(cid) if cid else "UPLOAD_FAILED"
     
     if cid:
@@ -143,29 +158,21 @@ def train(msg: Message, context: Context):
     else:
         print(f"❌ [Client {partition_id}] Upload Failed.")
 
-    # 清理本地临时文件
     shutil.rmtree(temp_dir, ignore_errors=True)
     shutil.rmtree(training_arguments.output_dir, ignore_errors=True)
 
-    # 6. 构造返回消息
-    # ------------------------------------------------------------------
-    # A. Metrics: 只能放数字 (int/float)
+    # 构造返回消息
     metrics = {
         "train_loss": train_results.training_loss,
         "num_examples": len(trainset),
     }
 
-    # B. Configs: 只能放字符串 (CID 放这里)
     configs = {
         "ipfs_cid": safe_cid
     }
 
-    # C. Arrays: 放空 (因为参数已经在 IPFS 上了)
-    arrays = ArrayRecord({})
-
-    # 打包
     content = RecordDict({
-        "arrays": arrays,
+        "arrays": ArrayRecord({}),
         "metrics": MetricRecord(metrics),
         "configs": ConfigRecord(configs),
     })
