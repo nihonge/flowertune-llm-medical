@@ -1,0 +1,1503 @@
+Loading project configuration... 
+Success
+/home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:06<00:13,  6.86s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:14<00:07,  7.16s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:21<00:00,  7.13s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:21<00:00,  7.10s/it]
+[93mWARNING [0m:   fraction_evaluate is set to 0.0. Federated evaluation will be skipped.
+[92mINFO [0m:      Starting FlowerTuneLlm strategy:
+[92mINFO [0m:      	├── Number of rounds: 5
+[92mINFO [0m:      	├── ArrayRecord (52.02 MB)
+[92mINFO [0m:      	├── ConfigRecord (train): {'save_path': /home/nihonge/20251229/flowertune-llm-medical/results/2026-03-02_23-01-36}
+[92mINFO [0m:      	├── ConfigRecord (evaluate): (empty!)
+[92mINFO [0m:      	├──> Sampling:
+[92mINFO [0m:      	│	├──Fraction: train (0.10) | evaluate ( 0.00)
+[92mINFO [0m:      	│	├──Minimum nodes: train (2) | evaluate (0)
+[92mINFO [0m:      	│	└──Minimum available nodes: 2
+[92mINFO [0m:      	└──> Keys in records:
+[92mINFO [0m:      		├── Weighted by: 'num-examples'
+[92mINFO [0m:      		├── ArrayRecord key: 'arrays'
+[92mINFO [0m:      		└── ConfigRecord key: 'config'
+[92mINFO [0m:      
+[92mINFO [0m:      Initial global evaluation results: {}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 1/5]
+[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
+[92mINFO [0m:      Communication budget: used 104.05 MB (+104.05 MB this round) / 200,000 MB
+[36m(pid=gcs_server)[0m [2026-03-02 23:02:07,130 E 1848607 1848607] (gcs_server) gcs_server.cc:302: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[33m(raylet)[0m [2026-03-02 23:02:07,955 E 1848770 1848770] (raylet) main.cc:975: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(pid=1848850)[0m [2026-03-02 23:02:08,392 E 1848850 1849284] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[2026-03-02 23:02:08,564 E 1848480 1848847] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(ClientAppActor pid=1850009)[0m Using the latest cached version of the dataset since flwrlabs/medical-meadow-medical-flashcards couldn't be found on the Hugging Face Hub
+[36m(ClientAppActor pid=1850009)[0m Found the latest cached dataset configuration 'default' at /home/nihonge/.cache/huggingface/datasets/flwrlabs___medical-meadow-medical-flashcards/default/0.0.0/bc33733afea65239aed2149aa79ea77742d28cc2 (last modified on Thu Feb 26 02:57:31 2026).
+[36m(ClientAppActor pid=1850009)[0m [2026-03-02 23:02:09,118 E 1850009 1850091] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14[32m [repeated 14x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.77s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.99s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.71s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.76s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<12:46,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:16<14:02,  8.59s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:26<14:15,  8.82s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:33<12:59,  8.12s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:43<13:54,  8.78s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:50<13:05,  8.36s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:57<12:21,  7.98s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [01:03<11:00,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:09<10:20,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:16<10:38,  7.09s/it]                                                 10%|█         | 10/100 [01:16<10:38,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:23<10:04,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:30<10:05,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:36<09:51,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:44<10:20,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:51<10:08,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:57<09:32,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:04<09:07,  6.59s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:11<09:14,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:17<09:02,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:24<09:07,  6.84s/it]                                                 20%|██        | 20/100 [02:24<09:07,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:31<08:53,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:38<08:43,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:44<08:22,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:51<08:25,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:58<08:27,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:05<08:37,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:14<09:14,  7.59s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:21<08:41,  7.24s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:27<08:20,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:33<07:53,  6.77s/it]                                                 30%|███       | 30/100 [03:33<07:53,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:40<07:50,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:47<07:38,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:54<07:37,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:01<07:37,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:08<07:34,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:16<07:37,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:23<07:26,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:28<06:51,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:37<07:29,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:44<07:07,  7.13s/it]                                                 40%|████      | 40/100 [04:44<07:07,  7.13s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:51<06:58,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:58<06:52,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:05<06:42,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:12<06:36,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:21<07:02,  7.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:28<06:46,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:35<06:23,  7.24s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:42<06:11,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:50<06:17,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:56<05:58,  7.16s/it]                                                 50%|█████     | 50/100 [05:56<05:58,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:03<05:39,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:11<05:48,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:19<05:53,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:26<05:37,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:34<05:34,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:42<05:34,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:48<05:14,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:55<04:57,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [07:01<04:42,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:09<04:42,  7.07s/it]                                                 60%|██████    | 60/100 [07:09<04:42,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:15<04:30,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:22<04:24,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:31<04:37,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:37<04:13,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:45<04:11,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:51<03:57,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:59<03:55,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:05<03:38,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:11<03:29,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:17<03:16,  6.54s/it]                                                 70%|███████   | 70/100 [08:17<03:16,  6.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:24<03:08,  6.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:30<02:57,  6.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:36<02:52,  6.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:42<02:39,  6.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:49<02:44,  6.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [08:57<02:45,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:04<02:39,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:13<02:43,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:20<02:32,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:28<02:30,  7.54s/it]                                                 80%|████████  | 80/100 [09:28<02:30,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:34<02:17,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:40<02:03,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:47<01:57,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [09:56<01:58,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:03<01:49,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:09<01:37,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:18<01:38,  7.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:27<01:36,  8.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:34<01:25,  7.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:41<01:14,  7.41s/it]                                                 90%|█████████ | 90/100 [10:41<01:14,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:48<01:06,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:57<01:02,  7.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:05<00:54,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:11<00:44,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:17<00:35,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:24<00:27,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:31<00:20,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:37<00:13,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:45<00:07,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:52<00:00,  7.10s/it]                                                 100%|██████████| 100/100 [11:52<00:00,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:52<00:00,  7.10s/it]100%|██████████| 100/100 [11:52<00:00,  7.13s/it]
+
+🛡️ [Server] 轮次 0 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 🆕 [Client 13] 未收到全局 CID (这是第1轮)，使用本地初始权重开局。
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 13] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.7158, 'grad_norm': 1.479213833808899, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.648, 'grad_norm': 1.7385157346725464, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5974, 'grad_norm': 1.8688957691192627, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6153, 'grad_norm': 1.3567084074020386, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6012, 'grad_norm': 1.517686367034912, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5705, 'grad_norm': 1.4989385604858398, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5985, 'grad_norm': 1.5605229139328003, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5911, 'grad_norm': 1.5089620351791382, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.571, 'grad_norm': 1.4896358251571655, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5818, 'grad_norm': 1.4199144840240479, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 712.9986, 'train_samples_per_second': 2.244, 'train_steps_per_second': 0.14, 'train_loss': 0.6090588998794556, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.42s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.56s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.57s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.55s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:08<14:50,  9.00s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:16<12:54,  7.90s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:21<11:15,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:27<10:26,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:35<10:54,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:41<10:32,  6.73s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:49<10:54,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [00:56<10:33,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:04<11:14,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:11<10:57,  7.30s/it]                                                 10%|█         | 10/100 [01:11<10:57,  7.30s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:17<10:17,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:24<10:10,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:30<09:39,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:36<09:18,  6.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:43<09:28,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:50<09:06,  6.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [01:57<09:12,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:06<10:09,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:15<10:54,  8.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:23<10:24,  7.81s/it]                                                 20%|██        | 20/100 [02:23<10:24,  7.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:29<09:37,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:35<09:02,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:42<08:57,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:48<08:41,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:56<08:49,  7.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:05<09:24,  7.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:12<09:03,  7.45s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:19<08:48,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:27<08:44,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:33<08:20,  7.15s/it]                                                 30%|███       | 30/100 [03:33<08:20,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:42<08:45,  7.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:48<08:04,  7.13s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:55<07:58,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:03<08:01,  7.30s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:09<07:26,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:19<08:18,  7.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:25<07:48,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:32<07:33,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:40<07:29,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:47<07:14,  7.24s/it]                                                 40%|████      | 40/100 [04:47<07:14,  7.24s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:55<07:21,  7.48s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [05:01<06:57,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:08<06:39,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:14<06:25,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:21<06:21,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:28<06:09,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:35<06:08,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:44<06:34,  7.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:52<06:33,  7.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [06:00<06:22,  7.66s/it]                                                 50%|█████     | 50/100 [06:00<06:22,  7.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:07<06:04,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:15<06:04,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:23<06:12,  7.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:30<05:39,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:36<05:13,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:45<05:36,  7.64s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:54<05:45,  8.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [07:00<05:17,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [07:09<05:23,  7.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:16<05:04,  7.61s/it]                                                 60%|██████    | 60/100 [07:16<05:04,  7.61s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:24<05:03,  7.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:31<04:42,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:39<04:47,  7.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:46<04:33,  7.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:52<04:04,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [08:00<04:14,  7.48s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [08:08<04:08,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:15<03:52,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:23<03:57,  7.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:32<03:54,  7.80s/it]                                                 70%|███████   | 70/100 [08:32<03:54,  7.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:38<03:35,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:45<03:24,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:52<03:14,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:58<02:57,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [09:04<02:45,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [09:12<02:48,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:16<02:21,  6.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:22<02:14,  6.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:30<02:20,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:37<02:15,  6.80s/it]                                                 80%|████████  | 80/100 [09:37<02:15,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:45<02:13,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:53<02:14,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:59<01:59,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [10:05<01:47,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:13<01:46,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:20<01:36,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:26<01:27,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:33<01:19,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:40<01:16,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:48<01:12,  7.29s/it]                                                 90%|█████████ | 90/100 [10:48<01:12,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:55<01:03,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [11:02<00:56,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:08<00:46,  6.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:15<00:40,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:21<00:33,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:29<00:27,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:36<00:21,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:43<00:14,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:50<00:07,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:56<00:00,  6.51s/it]                                                 100%|██████████| 100/100 [11:56<00:00,  6.51s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:56<00:00,  6.51s/it]100%|██████████| 100/100 [11:56<00:00,  7.16s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 15.18 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 13] 已彻底销毁本地明文权重: /tmp/flwr_client_13_wb3x0700/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 13] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 13] Upload Success! CID: QmdjywPgw4Nja1EW8ZfhxM6NkhGesq8DABnjfsoL3msA3Y
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 🆕 [Client 16] 未收到全局 CID (这是第1轮)，使用本地初始权重开局。
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 16] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6867, 'grad_norm': 1.639591932296753, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6148, 'grad_norm': 1.7648487091064453, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5934, 'grad_norm': 1.7138066291809082, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6192, 'grad_norm': 1.650854468345642, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.619, 'grad_norm': 1.5153968334197998, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6197, 'grad_norm': 1.6230593919754028, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5958, 'grad_norm': 1.6595836877822876, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6111, 'grad_norm': 1.7014697790145874, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6378, 'grad_norm': 1.4772440195083618, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5943, 'grad_norm': 1.9036742448806763, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 716.2576, 'train_samples_per_second': 2.234, 'train_steps_per_second': 0.14, 'train_loss': 0.619165358543396, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+/home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+  tar.extractall(path=target_dir)
+[92mINFO [0m:      📊 [Server] Round 1 Aggregated Loss: 0.6141
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.614110640778633}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 2/5]
+[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
+[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.59s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.66s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.61s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.62s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:08<14:32,  8.81s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:14<11:40,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:21<11:22,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:29<11:39,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:38<12:38,  7.99s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:46<12:29,  7.98s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:52<11:25,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [01:00<11:21,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:06<10:31,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:13<10:40,  7.12s/it]                                                 10%|█         | 10/100 [01:13<10:40,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:21<10:47,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:28<10:30,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:36<10:44,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:42<10:11,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:48<09:47,  6.91s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:55<09:32,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:03<09:43,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:09<09:21,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:15<08:56,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:22<08:57,  6.72s/it]                                                 20%|██        | 20/100 [02:22<08:57,  6.72s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:29<08:43,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:36<08:49,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:44<09:10,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:51<09:12,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:57<08:39,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:04<08:38,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:11<08:27,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:18<08:13,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:25<08:07,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:33<08:17,  7.11s/it]                                                 30%|███       | 30/100 [03:33<08:17,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:40<08:11,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:46<07:43,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:52<07:22,  6.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [03:58<07:06,  6.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:03<06:40,  6.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:10<06:50,  6.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:17<06:38,  6.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:24<06:45,  6.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:31<06:48,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:37<06:31,  6.52s/it]                                                 40%|████      | 40/100 [04:37<06:31,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:45<06:51,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:52<06:47,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [04:59<06:48,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:06<06:37,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:13<06:14,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:19<06:01,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:26<06:01,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:34<06:05,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:41<06:06,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:48<05:47,  6.95s/it]                                                 50%|█████     | 50/100 [05:48<05:47,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [05:55<05:40,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:01<05:33,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:08<05:21,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:16<05:24,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:23<05:15,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:29<05:01,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:36<04:58,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:44<04:58,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [06:52<05:11,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [06:59<04:56,  7.40s/it]                                                 60%|██████    | 60/100 [06:59<04:56,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:07<04:49,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:14<04:38,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:20<04:21,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:29<04:32,  7.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:36<04:19,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:45<04:28,  7.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:55<04:41,  8.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:02<04:18,  8.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:10<04:09,  8.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:15<03:35,  7.18s/it]                                                 70%|███████   | 70/100 [08:15<03:35,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:21<03:18,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:28<03:08,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:36<03:12,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:42<03:01,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:50<03:01,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [08:56<02:42,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:02<02:30,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:09<02:26,  6.64s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:16<02:22,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:23<02:14,  6.73s/it]                                                 80%|████████  | 80/100 [09:23<02:14,  6.73s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:31<02:15,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:38<02:07,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:47<02:10,  7.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [09:54<02:02,  7.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:02<01:56,  7.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:09<01:43,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:15<01:31,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:22<01:22,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:29<01:16,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:37<01:14,  7.47s/it]                                                 90%|█████████ | 90/100 [10:37<01:14,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:45<01:06,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:52<01:00,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [10:59<00:50,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:05<00:40,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:11<00:33,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:19<00:27,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:27<00:21,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:34<00:14,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:41<00:07,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:48<00:00,  7.00s/it]                                                 100%|██████████| 100/100 [11:48<00:00,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:48<00:00,  7.00s/it]100%|██████████| 100/100 [11:48<00:00,  7.08s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.85 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 16] 已彻底销毁本地明文权重: /tmp/flwr_client_16_kjh6fvsi/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 16] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 16] Upload Success! CID: QmV2CQ17YvKBh5XaHDX4gitVLi3UA7Bxw9fnosoEfSU8iw
+
+📥 [Server] Round 1: Processing 2 replies via IPFS...
+🔒 [Server] 成功读取混合模型，来自 CID: QmdjywPgw4Nja1EW8ZfhxM6NkhGesq8DABnjfsoL3msA3Y
+🔒 [Server] 成功读取混合模型，来自 CID: QmV2CQ17YvKBh5XaHDX4gitVLi3UA7Bxw9fnosoEfSU8iw
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.73 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmV7HTxzZAFLfrwSHPQaCPDSpZSqx3wgtuRQpBwT8bFSEK
+
+🛡️ [Server] 轮次 1 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 9] 收到全局 CID: QmV7HTxzZAFLfrwSHPQaCPDSpZSqx3wgtuRQpBwT8bFSEK，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 3.00 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 9] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 9] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6064, 'grad_norm': 1.4715356826782227, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6106, 'grad_norm': 1.6189194917678833, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6036, 'grad_norm': 1.50239896774292, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6125, 'grad_norm': 1.8633161783218384, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6174, 'grad_norm': 2.2973973751068115, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5885, 'grad_norm': 1.661513090133667, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5692, 'grad_norm': 2.243541717529297, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.595, 'grad_norm': 1.1490222215652466, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5499, 'grad_norm': 1.6397724151611328, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6046, 'grad_norm': 1.6499390602111816, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 708.3342, 'train_samples_per_second': 2.259, 'train_steps_per_second': 0.141, 'train_loss': 0.5957671356201172, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.77s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.08s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.24s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.17s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:06<10:56,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:14<11:45,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:21<11:51,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:29<12:08,  7.59s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:37<12:03,  7.61s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:44<11:31,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:50<10:55,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [00:59<11:32,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:05<10:44,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:11<10:06,  6.74s/it]                                                 10%|█         | 10/100 [01:11<10:06,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:18<10:11,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:24<09:41,  6.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:32<10:11,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:39<10:00,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:46<09:51,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:54<10:11,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:01<09:57,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:09<10:10,  7.45s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:16<10:08,  7.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:24<10:01,  7.52s/it]                                                 20%|██        | 20/100 [02:24<10:01,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:33<10:22,  7.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:39<09:32,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:47<09:38,  7.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:53<08:53,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [03:00<09:06,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:08<08:54,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:14<08:30,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:22<08:48,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:30<08:47,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:37<08:29,  7.28s/it]                                                 30%|███       | 30/100 [03:37<08:29,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:43<07:55,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:49<07:30,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:58<08:23,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:06<08:17,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:12<07:39,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:21<08:02,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:27<07:44,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:36<08:00,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:43<07:28,  7.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:51<07:43,  7.72s/it]                                                 40%|████      | 40/100 [04:51<07:43,  7.72s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:58<07:25,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [05:05<07:09,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:14<07:24,  7.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:21<07:06,  7.61s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:28<06:47,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:36<06:44,  7.48s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:42<06:14,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:48<05:52,  6.78s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:57<06:23,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [06:04<06:06,  7.33s/it]                                                 50%|█████     | 50/100 [06:04<06:06,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:11<05:56,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:18<05:44,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:25<05:26,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:30<05:01,  6.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:37<05:01,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:44<04:56,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:50<04:39,  6.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:57<04:34,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [07:03<04:26,  6.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:10<04:20,  6.52s/it]                                                 60%|██████    | 60/100 [07:10<04:20,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:17<04:20,  6.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:24<04:16,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:32<04:30,  7.30s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:38<04:08,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:45<03:56,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:52<03:58,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:59<03:50,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:06<03:38,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:13<03:33,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:19<03:18,  6.62s/it]                                                 70%|███████   | 70/100 [08:19<03:18,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:26<03:16,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:33<03:13,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:41<03:15,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:49<03:11,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:54<02:49,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [09:02<02:52,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:08<02:37,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:16<02:36,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:24<02:35,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:31<02:25,  7.28s/it]                                                 80%|████████  | 80/100 [09:31<02:25,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:39<02:20,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:46<02:13,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:54<02:09,  7.61s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [10:01<01:58,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:07<01:42,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:15<01:40,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:24<01:39,  7.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:33<01:37,  8.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:40<01:25,  7.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:45<01:10,  7.09s/it]                                                 90%|█████████ | 90/100 [10:45<01:10,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:52<01:02,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:59<00:56,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:06<00:49,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:13<00:41,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:23<00:39,  7.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:32<00:32,  8.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:40<00:24,  8.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:47<00:15,  7.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:53<00:07,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [12:01<00:00,  7.42s/it]                                                 100%|██████████| 100/100 [12:01<00:00,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [12:01<00:00,  7.42s/it]100%|██████████| 100/100 [12:01<00:00,  7.21s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.83 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 9] 已彻底销毁本地明文权重: /tmp/flwr_client_9_mlg_crco/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 9] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 9] Upload Success! CID: QmawmBZUme21fUMfhc4tH1kMVwThovxRstL3b1QqvUYxgW
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 11] 收到全局 CID: QmV7HTxzZAFLfrwSHPQaCPDSpZSqx3wgtuRQpBwT8bFSEK，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 3.00 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 11] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 11] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5916, 'grad_norm': 1.5329564809799194, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6068, 'grad_norm': 1.4859107732772827, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5951, 'grad_norm': 1.3784663677215576, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5971, 'grad_norm': 1.3139196634292603, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5655, 'grad_norm': 1.1900993585586548, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5995, 'grad_norm': 1.5833810567855835, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5933, 'grad_norm': 1.6513184309005737, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.583, 'grad_norm': 1.1918416023254395, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6015, 'grad_norm': 1.7257874011993408, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5905, 'grad_norm': 1.8251888751983643, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 721.4848, 'train_samples_per_second': 2.218, 'train_steps_per_second': 0.139, 'train_loss': 0.5923699808120727, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.71 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 11] 已彻底销毁本地明文权重: /tmp/flwr_client_11_dn9qdz0n/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 11] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 11] Upload Success! CID: QmW9JkNkzCGzCTFvVD1F6JKQweaaKQfD4JhKxoHs6Eha9s
+
+📥 [Server] Round 2: Processing 2 replies via IPFS...
+🔒 [Server] 成功读取混合模型，来自 CID: QmawmBZUme21fUMfhc4tH1kMVwThovxRstL3b1QqvUYxgW[92mINFO [0m:      📊 [Server] Round 2 Aggregated Loss: 0.5941
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.5940685582160949}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 3/5]
+[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
+[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.72s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.66s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.57s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.60s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<11:58,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:13<10:41,  6.55s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:21<11:34,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:27<10:42,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:34<10:43,  6.78s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:40<10:31,  6.72s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:47<10:31,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [00:54<10:19,  6.73s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:00<10:07,  6.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:06<09:41,  6.46s/it]                                                 10%|█         | 10/100 [01:06<09:41,  6.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:12<09:23,  6.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:20<10:04,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:28<10:14,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:36<10:31,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:44<10:33,  7.45s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:50<09:48,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [01:57<09:54,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:04<09:28,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:11<09:27,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:17<08:53,  6.66s/it]                                                 20%|██        | 20/100 [02:17<08:53,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:23<08:30,  6.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:30<08:40,  6.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:37<08:44,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:46<09:29,  7.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:53<09:09,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [02:59<08:41,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:06<08:32,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:13<08:26,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:20<08:18,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:29<08:55,  7.65s/it]                                                 30%|███       | 30/100 [03:29<08:55,  7.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:37<08:37,  7.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:44<08:20,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:50<07:58,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [03:57<07:37,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:05<07:51,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:12<07:42,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:19<07:31,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:24<06:52,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:31<06:50,  6.72s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:38<06:51,  6.86s/it]                                                 40%|████      | 40/100 [04:38<06:51,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:45<06:39,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:52<06:35,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:01<07:10,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:08<06:53,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:16<06:48,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:22<06:27,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:30<06:35,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:38<06:23,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:44<05:56,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:51<05:49,  6.99s/it]                                                 50%|█████     | 50/100 [05:51<05:49,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [05:57<05:34,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:04<05:24,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:10<05:15,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:19<05:39,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:25<05:14,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:32<04:56,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:39<04:59,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:46<04:52,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [06:53<04:46,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:00<04:40,  7.01s/it]                                                 60%|██████    | 60/100 [07:00<04:40,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:06<04:21,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:13<04:12,  6.64s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:20<04:11,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:26<03:55,  6.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:33<03:55,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:41<04:03,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:48<03:55,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [07:56<03:56,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:03<03:45,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:09<03:25,  6.86s/it]                                                 70%|███████   | 70/100 [08:09<03:25,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:16<03:16,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:23<03:12,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:30<03:10,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:38<03:12,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:47<03:10,  7.61s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [08:54<02:58,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:01<02:54,  7.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:08<02:39,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:15<02:27,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:20<02:11,  6.57s/it]                                                 80%|████████  | 80/100 [09:20<02:11,  6.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:29<02:16,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:37<02:13,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:43<02:01,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [09:52<02:03,  7.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [09:59<01:52,  7.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:08<01:50,  7.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:18<01:52,  8.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:25<01:36,  8.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:31<01:23,  7.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:38<01:12,  7.29s/it]                                                 90%|█████████ | 90/100 [10:38<01:12,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:45<01:04,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:50<00:52,  6.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [10:58<00:48,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:04<00:40,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:11<00:33,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:17<00:26,  6.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:25<00:20,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:31<00:13,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:38<00:06,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:44<00:00,  6.60s/it]                                                 100%|██████████| 100/100 [11:44<00:00,  6.60s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:44<00:00,  6.60s/it]100%|██████████| 100/100 [11:44<00:00,  7.05s/it]
+
+🔒 [Server] 成功读取混合模型，来自 CID: QmW9JkNkzCGzCTFvVD1F6JKQweaaKQfD4JhKxoHs6Eha9s
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.59 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmQEPcsHrcvDsgFze8QLRtEpEL491DoNDyboNSZJ37C8M2
+
+🛡️ [Server] 轮次 2 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 5] 收到全局 CID: QmQEPcsHrcvDsgFze8QLRtEpEL491DoNDyboNSZJ37C8M2，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 2.95 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 5] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 5] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6027, 'grad_norm': 1.9912811517715454, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5805, 'grad_norm': 1.7312513589859009, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.575, 'grad_norm': 1.3192338943481445, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.568, 'grad_norm': 1.6188002824783325, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.577, 'grad_norm': 1.359858512878418, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5649, 'grad_norm': 1.2817169427871704, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5767, 'grad_norm': 1.766583800315857, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5505, 'grad_norm': 2.219729423522949, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5459, 'grad_norm': 1.939231276512146, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6164, 'grad_norm': 1.5007442235946655, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 704.6829, 'train_samples_per_second': 2.271, 'train_steps_per_second': 0.142, 'train_loss': 0.5757637071609497, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.79s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.75s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.68s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.70s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<11:52,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:13<11:07,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:20<11:05,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:28<11:45,  7.35s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:37<12:21,  7.80s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:45<12:38,  8.07s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:53<12:27,  8.04s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [01:01<12:18,  8.03s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:08<11:37,  7.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:15<11:11,  7.47s/it]                                                 10%|█         | 10/100 [01:15<11:11,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:22<10:55,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:29<10:28,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:36<10:02,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:43<10:11,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:51<10:26,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:57<09:46,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:04<09:26,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:10<08:58,  6.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:17<09:24,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:25<09:22,  7.03s/it]                                                 20%|██        | 20/100 [02:25<09:22,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:32<09:15,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:40<09:45,  7.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:49<10:03,  7.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:57<10:02,  7.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [03:04<09:24,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:11<09:17,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:19<09:20,  7.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:27<09:13,  7.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:33<08:31,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:40<08:21,  7.16s/it]                                                 30%|███       | 30/100 [03:40<08:21,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:48<08:34,  7.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:55<08:21,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [04:03<08:10,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:11<08:28,  7.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:18<08:10,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:25<07:44,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:32<07:43,  7.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:39<07:26,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:46<07:08,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:52<06:41,  6.69s/it]                                                 40%|████      | 40/100 [04:52<06:41,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [05:01<07:10,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [05:07<06:50,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:15<06:51,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:21<06:25,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:29<06:37,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:38<06:54,  7.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:44<06:27,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:54<07:07,  8.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [06:00<06:23,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [06:07<06:08,  7.37s/it]                                                 50%|█████     | 50/100 [06:07<06:08,  7.37s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:14<05:55,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:21<05:46,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:28<05:35,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:35<05:18,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:42<05:12,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:49<05:07,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:57<05:13,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [07:02<04:43,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [07:10<04:47,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:17<04:41,  7.03s/it]                                                 60%|██████    | 60/100 [07:17<04:41,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:23<04:27,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:31<04:29,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:38<04:17,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:45<04:11,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:53<04:16,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:59<03:59,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [08:07<04:01,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:15<04:01,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:26<04:24,  8.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:33<04:03,  8.12s/it]                                                 70%|███████   | 70/100 [08:33<04:03,  8.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:45<04:23,  9.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:52<03:57,  8.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:59<03:41,  8.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [09:06<03:24,  7.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [09:14<03:17,  7.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [09:20<02:54,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:27<02:42,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:33<02:31,  6.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:40<02:26,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:48<02:26,  7.31s/it]                                                 80%|████████  | 80/100 [09:48<02:26,  7.31s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.86 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 5] 已彻底销毁本地明文权重: /tmp/flwr_client_5_hx5d9p78/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 5] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 5] Upload Success! CID: QmNr75d9YLBi79XzFR55viMyWLAoBU25eVepp6DkJQ8pV3
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 18] 收到全局 CID: QmQEPcsHrcvDsgFze8QLRtEpEL491DoNDyboNSZJ37C8M2，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 2.93 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 18] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 18] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5693, 'grad_norm': 1.368788719177246, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5986, 'grad_norm': 1.2025305032730103, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5884, 'grad_norm': 1.4164955615997314, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5975, 'grad_norm': 2.364363193511963, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5735, 'grad_norm': 1.3759093284606934, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5821, 'grad_norm': 1.365057349205017, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5664, 'grad_norm': 1.304762840270996, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5773, 'grad_norm': 1.468216896057129, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.75}[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:54<02:10,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [10:00<01:59,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [10:06<01:48,  6.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [10:15<01:55,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:21<01:42,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:28<01:35,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:33<01:22,  6.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:39<01:13,  6.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:46<01:10,  6.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:54<01:07,  6.75s/it]                                                 90%|█████████ | 90/100 [10:54<01:07,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [11:00<00:59,  6.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [11:07<00:54,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:13<00:46,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:20<00:39,  6.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:27<00:33,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:35<00:29,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:42<00:21,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:48<00:13,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:57<00:07,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [12:05<00:00,  7.67s/it]                                                 100%|██████████| 100/100 [12:05<00:00,  7.67s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [12:05<00:00,  7.67s/it]100%|██████████| 100/100 [12:05<00:00,  7.26s/it]
+
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6082, 'grad_norm': 1.268431305885315, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5909, 'grad_norm': 1.2662163972854614, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 725.9432, 'train_samples_per_second': 2.204, 'train_steps_per_second': 0.138, 'train_loss': 0.5852200555801391, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[92mINFO [0m:      📊 [Server] Round 3 Aggregated Loss: 0.5805
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.5804904886830011}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 4/5]
+[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
+[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.97s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.73s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.60s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.66s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<13:03,  7.92s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:16<13:53,  8.50s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:23<12:42,  7.86s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:30<11:59,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:40<13:06,  8.28s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:46<11:30,  7.35s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:54<12:04,  7.79s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [01:00<11:04,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:06<10:18,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:13<10:14,  6.83s/it]                                                 10%|█         | 10/100 [01:13<10:14,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:19<09:41,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:25<09:22,  6.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:32<09:22,  6.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:38<09:15,  6.45s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:45<09:12,  6.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:53<09:46,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:00<09:38,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:06<09:10,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:12<09:00,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:18<08:35,  6.44s/it]                                                 20%|██        | 20/100 [02:18<08:35,  6.44s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:24<08:20,  6.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:32<08:33,  6.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:38<08:13,  6.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:45<08:24,  6.64s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:51<08:05,  6.48s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [02:58<08:11,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:06<08:37,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:13<08:39,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:21<08:31,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:27<07:58,  6.84s/it]                                                 30%|███       | 30/100 [03:27<07:58,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:35<08:15,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:41<07:52,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:47<07:27,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [03:53<06:58,  6.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [03:59<06:57,  6.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:06<06:51,  6.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:14<07:17,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:23<07:48,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:31<07:47,  7.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:38<07:27,  7.46s/it]                                                 40%|████      | 40/100 [04:38<07:27,  7.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:44<06:55,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:53<07:18,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:00<07:03,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:07<06:49,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:15<06:54,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:22<06:40,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:28<06:17,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:38<06:50,  7.89s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:46<06:46,  7.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:54<06:41,  8.03s/it]                                                 50%|█████     | 50/100 [05:54<06:41,  8.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:01<06:18,  7.73s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:07<05:39,  7.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:14<05:30,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:20<05:14,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:26<04:56,  6.59s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:33<04:50,  6.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:40<04:51,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:46<04:33,  6.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [06:53<04:31,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [06:59<04:24,  6.62s/it]                                                 60%|██████    | 60/100 [06:59<04:24,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:06<04:15,  6.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:14<04:27,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:21<04:15,  6.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:27<04:03,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:33<03:47,  6.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:40<03:47,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:48<03:54,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [07:55<03:47,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:02<03:39,  7.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:10<03:40,  7.36s/it]                                                 70%|███████   | 70/100 [08:10<03:40,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:17<03:26,  7.13s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:23<03:13,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:32<03:24,  7.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:40<03:20,  7.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:47<03:06,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [08:53<02:48,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:00<02:40,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:08<02:40,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:15<02:30,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:22<02:20,  7.01s/it]                                                 80%|████████  | 80/100 [09:22<02:20,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:31<02:27,  7.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:39<02:21,  7.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:46<02:07,  7.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [09:53<01:54,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [09:59<01:46,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:07<01:43,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:18<01:49,  8.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:26<01:39,  8.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:32<01:23,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:38<01:11,  7.15s/it]                                                 90%|█████████ | 90/100 [10:38<01:11,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:46<01:05,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:53<00:57,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:01<00:51,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:07<00:42,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:13<00:34,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:20<00:27,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:28<00:20,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:35<00:13,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:41<00:06,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:47<00:00,  6.67s/it]                                                 100%|██████████| 100/100 [11:47<00:00,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:47<00:00,  6.67s/it]100%|██████████| 100/100 [11:47<00:00,  7.08s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.72 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 18] 已彻底销毁本地明文权重: /tmp/flwr_client_18_5evfotnc/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 18] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 18] Upload Success! CID: QmbTD5tnMiW4ffSbSZi3UMCHjY1wD4KF5BLf3vTbRP4M1g
+
+📥 [Server] Round 3: Processing 2 replies via IPFS...
+🔒 [Server] 成功读取混合模型，来自 CID: QmNr75d9YLBi79XzFR55viMyWLAoBU25eVepp6DkJQ8pV3
+🔒 [Server] 成功读取混合模型，来自 CID: QmbTD5tnMiW4ffSbSZi3UMCHjY1wD4KF5BLf3vTbRP4M1g
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.42 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmR5XwZNTWXkR36YnqU2wzBXqfxjfc8H8tvNQRQtK6V1qV
+
+🛡️ [Server] 轮次 3 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 4] 收到全局 CID: QmR5XwZNTWXkR36YnqU2wzBXqfxjfc8H8tvNQRQtK6V1qV，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 2.95 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 4] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 4] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5944, 'grad_norm': 1.765600562095642, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6292, 'grad_norm': 1.8208268880844116, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6008, 'grad_norm': 1.6220976114273071, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.6025, 'grad_norm': 1.6682236194610596, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5606, 'grad_norm': 1.1765505075454712, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.586, 'grad_norm': 1.342199683189392, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5972, 'grad_norm': 1.6437300443649292, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5807, 'grad_norm': 1.629634141921997, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5804, 'grad_norm': 2.0669989585876465, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5591, 'grad_norm': 1.474282145500183, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 707.8942, 'train_samples_per_second': 2.26, 'train_steps_per_second': 0.141, 'train_loss': 0.5890808248519898, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.64s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.52s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.41s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.45s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<12:13,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:13<10:36,  6.49s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:18<09:49,  6.08s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:26<10:43,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:34<11:24,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:42<11:38,  7.44s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:49<11:05,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [00:56<10:57,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:03<10:49,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:10<10:53,  7.26s/it]                                                 10%|█         | 10/100 [01:10<10:53,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:17<10:28,  7.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:23<10:04,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:31<10:27,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:38<10:15,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:46<10:08,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:53<10:10,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [01:59<09:34,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:07<09:58,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:13<09:17,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:21<09:37,  7.22s/it]                                                 20%|██        | 20/100 [02:21<09:37,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:28<09:28,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:35<09:17,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:43<09:29,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:51<09:14,  7.30s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:57<08:58,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:04<08:34,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:12<08:51,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:19<08:49,  7.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:25<08:12,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:35<09:04,  7.78s/it]                                                 30%|███       | 30/100 [03:35<09:04,  7.78s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:42<08:44,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:47<07:42,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:54<07:32,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:01<07:28,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:08<07:24,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:16<07:38,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:23<07:28,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:29<07:11,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:37<07:24,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:44<07:10,  7.18s/it]                                                 40%|████      | 40/100 [04:44<07:10,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:51<07:03,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:59<07:11,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:06<06:49,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:13<06:39,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:22<06:56,  7.57s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:31<07:21,  8.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:38<06:45,  7.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:44<06:12,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:51<06:05,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:57<05:42,  6.85s/it]                                                 50%|█████     | 50/100 [05:57<05:42,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:04<05:40,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:11<05:34,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:18<05:26,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:26<05:28,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:32<05:13,  6.97s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:39<05:07,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:45<04:47,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:52<04:45,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [06:59<04:40,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:06<04:30,  6.76s/it]                                                 60%|██████    | 60/100 [07:06<04:30,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:12<04:14,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:21<04:35,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:29<04:37,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:35<04:17,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:41<03:58,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:48<03:49,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:56<03:55,  7.13s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:04<03:55,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:12<03:53,  7.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:18<03:37,  7.25s/it]                                                 70%|███████   | 70/100 [08:18<03:37,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:25<03:29,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:33<03:24,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:40<03:16,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:47<03:07,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:54<02:55,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [09:02<02:56,  7.36s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:09<02:50,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:19<02:54,  7.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:26<02:41,  7.68s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:33<02:30,  7.52s/it]                                                 80%|████████  | 80/100 [09:33<02:30,  7.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:42<02:31,  7.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:49<02:21,  7.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:55<02:03,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [10:02<01:53,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:08<01:41,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:15<01:35,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:22<01:27,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:29<01:22,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:36<01:17,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:43<01:09,  6.91s/it]                                                 90%|█████████ | 90/100 [10:43<01:09,  6.91s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:49<01:00,  6.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:55<00:52,  6.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:02<00:46,  6.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:10<00:42,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:16<00:33,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:22<00:26,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:30<00:20,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:36<00:13,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:44<00:07,  7.04s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:52<00:00,  7.24s/it]                                                 100%|██████████| 100/100 [11:52<00:00,  7.24s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:52<00:00,  7.24s/it]100%|██████████| 100/100 [11:52<00:00,  7.12s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.85 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 4] 已彻底销毁本地明文权重: /tmp/flwr_client_4_mkizr42s/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 4] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 4] Upload Success! CID: QmVCsmxvM4gvTSWuSEtW8D1jxp5aveUkKvqDDfHiKaVVvf
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 19] 收到全局 CID: QmR5XwZNTWXkR36YnqU2wzBXqfxjfc8H8tvNQRQtK6V1qV，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 2.93 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 19] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 19] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5605, 'grad_norm': 1.3117228746414185, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5896, 'grad_norm': 1.5987637042999268, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5592, 'grad_norm': 1.400009036064148, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5965, 'grad_norm': 1.145442008972168, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5769, 'grad_norm': 1.3095250129699707, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5797, 'grad_norm': 1.7007108926773071, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5908, 'grad_norm': 1.5999847650527954, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5833, 'grad_norm': 1.351725697517395, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.581, 'grad_norm': 1.6038011312484741, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5671, 'grad_norm': 1.3706259727478027, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 712.1947, 'train_samples_per_second': 2.247, 'train_steps_per_second': 0.14, 'train_loss': 0.5784581279754639, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[92mINFO [0m:      📊 [Server] Round 4 Aggregated Loss: 0.5838
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.5837710408757115}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 5/5]
+[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
+[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.08s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.75s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.55s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.63s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:07<11:54,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:15<13:03,  8.00s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:24<13:20,  8.25s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:32<13:06,  8.19s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:39<12:13,  7.73s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:45<11:14,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:52<11:17,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [00:59<11:02,  7.20s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:08<11:44,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:18<12:31,  8.35s/it]                                                 10%|█         | 10/100 [01:18<12:31,  8.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:25<11:34,  7.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:32<11:18,  7.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:39<10:37,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:47<10:48,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:55<10:50,  7.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [02:01<10:22,  7.41s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:07<09:29,  6.86s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:12<08:40,  6.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:19<08:48,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:26<08:43,  6.54s/it]                                                 20%|██        | 20/100 [02:26<08:43,  6.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:32<08:34,  6.51s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:39<08:42,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:46<08:32,  6.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:53<08:45,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [03:00<08:44,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:07<08:29,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:13<08:03,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:21<08:19,  6.94s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:27<08:04,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:36<08:25,  7.22s/it]                                                 30%|███       | 30/100 [03:36<08:25,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:45<08:56,  7.77s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:52<08:33,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [04:01<09:06,  8.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [04:09<08:48,  8.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:16<08:23,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:24<08:21,  7.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:33<08:29,  8.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:40<08:00,  7.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:47<07:37,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:52<06:52,  6.88s/it]                                                 40%|████      | 40/100 [04:52<06:52,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:59<06:48,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [05:06<06:36,  6.83s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:12<06:22,  6.71s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:20<06:29,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:26<06:08,  6.70s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:32<05:52,  6.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:39<05:53,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:45<05:38,  6.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:51<05:23,  6.35s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [06:03<06:45,  8.12s/it]                                                 50%|█████     | 50/100 [06:03<06:45,  8.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [06:10<06:19,  7.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:16<05:48,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:23<05:29,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:30<05:29,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:37<05:14,  6.99s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:45<05:28,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:51<05:03,  7.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:59<05:03,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [07:05<04:40,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [07:11<04:24,  6.62s/it]                                                 60%|██████    | 60/100 [07:11<04:24,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:18<04:15,  6.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:26<04:34,  7.21s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:33<04:25,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:40<04:12,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:48<04:15,  7.31s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:55<04:03,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [08:03<04:05,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:10<03:59,  7.49s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:17<03:47,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:26<03:47,  7.58s/it]                                                 70%|███████   | 70/100 [08:26<03:47,  7.58s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:32<03:29,  7.23s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:39<03:20,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:47<03:21,  7.45s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:53<03:02,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:59<02:47,  6.72s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [09:06<02:40,  6.67s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:12<02:33,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:19<02:27,  6.73s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:26<02:23,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:33<02:18,  6.93s/it]                                                 80%|████████  | 80/100 [09:33<02:18,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:42<02:18,  7.29s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:50<02:15,  7.50s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:58<02:10,  7.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [10:05<01:59,  7.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:14<02:01,  8.09s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:22<01:52,  8.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:30<01:44,  8.04s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:37<01:30,  7.56s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:44<01:21,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:50<01:09,  6.95s/it]                                                 90%|█████████ | 90/100 [10:50<01:09,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:58<01:07,  7.48s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [11:05<00:58,  7.34s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [11:12<00:50,  7.22s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:19<00:43,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:26<00:35,  7.11s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:33<00:27,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:40<00:20,  6.91s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:47<00:13,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:53<00:06,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [12:00<00:00,  6.74s/it]                                                 100%|██████████| 100/100 [12:00<00:00,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [12:00<00:00,  6.74s/it]100%|██████████| 100/100 [12:00<00:00,  7.20s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 15.05 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 19] 已彻底销毁本地明文权重: /tmp/flwr_client_19_a02_6hdj/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 19] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 19] Upload Success! CID: QmbMw8T3hznhycoevKNxsvS3ZWTyao9P7mQX98E1Q1A9sJ
+
+📥 [Server] Round 4: Processing 2 replies via IPFS...
+🔒 [Server] 成功读取混合模型，来自 CID: QmVCsmxvM4gvTSWuSEtW8D1jxp5aveUkKvqDDfHiKaVVvf
+🔒 [Server] 成功读取混合模型，来自 CID: QmbMw8T3hznhycoevKNxsvS3ZWTyao9P7mQX98E1Q1A9sJ
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.42 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmcwJ4fDBC2thX1NUzANQUBWPiJ3Q989M4ck3YgYKxG4RW
+
+🛡️ [Server] 轮次 4 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 1] 收到全局 CID: QmcwJ4fDBC2thX1NUzANQUBWPiJ3Q989M4ck3YgYKxG4RW，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 3.01 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 1] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 1] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5622, 'grad_norm': 1.1660587787628174, 'learning_rate': 1e-06, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5513, 'grad_norm': 1.450888991355896, 'learning_rate': 1e-06, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5867, 'grad_norm': 1.4595561027526855, 'learning_rate': 1e-06, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5712, 'grad_norm': 1.8021578788757324, 'learning_rate': 1e-06, 'epoch': 0.37}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5776, 'grad_norm': 1.276900053024292, 'learning_rate': 1e-06, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5854, 'grad_norm': 1.6838021278381348, 'learning_rate': 1e-06, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5837, 'grad_norm': 1.5836195945739746, 'learning_rate': 1e-06, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5981, 'grad_norm': 1.534891963005066, 'learning_rate': 1e-06, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5512, 'grad_norm': 1.6065114736557007, 'learning_rate': 1e-06, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5925, 'grad_norm': 1.4329274892807007, 'learning_rate': 1e-06, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 720.4507, 'train_samples_per_second': 2.221, 'train_steps_per_second': 0.139, 'train_loss': 0.5759900665283203, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.87s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.73s/it]
+[36m(ClientAppActor pid=1850009)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.69s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.72s/it]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+[36m(ClientAppActor pid=1850009)[0m   tar.extractall(path=target_dir)
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
+[36m(ClientAppActor pid=1850009)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
+[36m(ClientAppActor pid=1850009)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
+[36m(ClientAppActor pid=1850009)[0m   super().__init__(
+[36m(ClientAppActor pid=1850009)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+[36m(ClientAppActor pid=1850009)[0m   0%|          | 0/100 [00:00<?, ?it/s]
+[36m(ClientAppActor pid=1850009)[0m   1%|          | 1/100 [00:08<14:43,  8.92s/it]
+[36m(ClientAppActor pid=1850009)[0m   2%|▏         | 2/100 [00:14<11:44,  7.19s/it]
+[36m(ClientAppActor pid=1850009)[0m   3%|▎         | 3/100 [00:21<11:24,  7.06s/it]
+[36m(ClientAppActor pid=1850009)[0m   4%|▍         | 4/100 [00:29<11:40,  7.30s/it]
+[36m(ClientAppActor pid=1850009)[0m   5%|▌         | 5/100 [00:38<12:39,  8.00s/it]
+[36m(ClientAppActor pid=1850009)[0m   6%|▌         | 6/100 [00:46<12:30,  7.99s/it]
+[36m(ClientAppActor pid=1850009)[0m   7%|▋         | 7/100 [00:52<11:26,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m   8%|▊         | 8/100 [01:00<11:22,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m   9%|▉         | 9/100 [01:06<10:32,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  10%|█         | 10/100 [01:13<10:41,  7.13s/it]                                                 10%|█         | 10/100 [01:13<10:41,  7.13s/it]
+[36m(ClientAppActor pid=1850009)[0m  11%|█         | 11/100 [01:21<10:47,  7.28s/it]
+[36m(ClientAppActor pid=1850009)[0m  12%|█▏        | 12/100 [01:28<10:30,  7.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  13%|█▎        | 13/100 [01:36<10:45,  7.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  14%|█▍        | 14/100 [01:42<10:12,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  15%|█▌        | 15/100 [01:49<09:46,  6.91s/it]
+[36m(ClientAppActor pid=1850009)[0m  16%|█▌        | 16/100 [01:55<09:32,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  17%|█▋        | 17/100 [02:03<09:43,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  18%|█▊        | 18/100 [02:09<09:21,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  19%|█▉        | 19/100 [02:15<08:56,  6.62s/it]
+[36m(ClientAppActor pid=1850009)[0m  20%|██        | 20/100 [02:22<08:57,  6.72s/it]                                                 20%|██        | 20/100 [02:22<08:57,  6.72s/it]
+[36m(ClientAppActor pid=1850009)[0m  21%|██        | 21/100 [02:29<08:43,  6.63s/it]
+[36m(ClientAppActor pid=1850009)[0m  22%|██▏       | 22/100 [02:36<08:49,  6.79s/it]
+[36m(ClientAppActor pid=1850009)[0m  23%|██▎       | 23/100 [02:44<09:10,  7.14s/it]
+[36m(ClientAppActor pid=1850009)[0m  24%|██▍       | 24/100 [02:51<09:12,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  25%|██▌       | 25/100 [02:57<08:39,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  26%|██▌       | 26/100 [03:05<08:38,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m  27%|██▋       | 27/100 [03:11<08:27,  6.96s/it]
+[36m(ClientAppActor pid=1850009)[0m  28%|██▊       | 28/100 [03:18<08:13,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  29%|██▉       | 29/100 [03:25<08:07,  6.87s/it]
+[36m(ClientAppActor pid=1850009)[0m  30%|███       | 30/100 [03:33<08:17,  7.10s/it]                                                 30%|███       | 30/100 [03:33<08:17,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  31%|███       | 31/100 [03:40<08:11,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  32%|███▏      | 32/100 [03:46<07:43,  6.81s/it]
+[36m(ClientAppActor pid=1850009)[0m  33%|███▎      | 33/100 [03:52<07:22,  6.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  34%|███▍      | 34/100 [03:58<07:06,  6.46s/it]
+[36m(ClientAppActor pid=1850009)[0m  35%|███▌      | 35/100 [04:04<06:40,  6.16s/it]
+[36m(ClientAppActor pid=1850009)[0m  36%|███▌      | 36/100 [04:11<06:51,  6.42s/it]
+[36m(ClientAppActor pid=1850009)[0m  37%|███▋      | 37/100 [04:17<06:38,  6.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  38%|███▊      | 38/100 [04:24<06:45,  6.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  39%|███▉      | 39/100 [04:31<06:48,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  40%|████      | 40/100 [04:37<06:31,  6.52s/it]                                                 40%|████      | 40/100 [04:37<06:31,  6.52s/it]
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.75 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 1] 已彻底销毁本地明文权重: /tmp/flwr_client_1_50lxq0ri/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 1] Uploading hybrid parameters to IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 1] Upload Success! CID: QmVqrmCbXdCFbBSJzdYvX5r1yTWAMLja79oMs9uhKox3Sn
+[36m(ClientAppActor pid=1850009)[0m 
+[36m(ClientAppActor pid=1850009)[0m 📥 [Client 9] 收到全局 CID: QmcwJ4fDBC2thX1NUzANQUBWPiJ3Q989M4ck3YgYKxG4RW，准备下载密文...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 混合解密还原完成！总耗时: 3.00 秒
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 9] 成功吸收 Server 端发来的全局聚合经验！
+[36m(ClientAppActor pid=1850009)[0m 🚀 [Client 9] 准备就绪，开始本地微调...
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.554, 'grad_norm': 1.5455232858657837, 'learning_rate': 1e-06, 'epoch': 0.09}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.571, 'grad_norm': 1.7224059104919434, 'learning_rate': 1e-06, 'epoch': 0.19}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.568, 'grad_norm': 1.4614288806915283, 'learning_rate': 1e-06, 'epoch': 0.28}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5769, 'grad_norm': 1.7889493703842163, 'learning_rate': 1e-06, 'epoch': 0.37}[36m(ClientAppActor pid=1850009)[0m  41%|████      | 41/100 [04:45<06:51,  6.98s/it]
+[36m(ClientAppActor pid=1850009)[0m  42%|████▏     | 42/100 [04:52<06:47,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  43%|████▎     | 43/100 [05:00<06:49,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  44%|████▍     | 44/100 [05:07<06:37,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  45%|████▌     | 45/100 [05:13<06:14,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  46%|████▌     | 46/100 [05:19<06:01,  6.69s/it]
+[36m(ClientAppActor pid=1850009)[0m  47%|████▋     | 47/100 [05:26<06:01,  6.82s/it]
+[36m(ClientAppActor pid=1850009)[0m  48%|████▊     | 48/100 [05:34<06:05,  7.03s/it]
+[36m(ClientAppActor pid=1850009)[0m  49%|████▉     | 49/100 [05:41<06:06,  7.18s/it]
+[36m(ClientAppActor pid=1850009)[0m  50%|█████     | 50/100 [05:48<05:47,  6.95s/it]                                                 50%|█████     | 50/100 [05:48<05:47,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  51%|█████     | 51/100 [05:55<05:40,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  52%|█████▏    | 52/100 [06:02<05:33,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  53%|█████▎    | 53/100 [06:08<05:21,  6.84s/it]
+[36m(ClientAppActor pid=1850009)[0m  54%|█████▍    | 54/100 [06:16<05:24,  7.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  55%|█████▌    | 55/100 [06:23<05:15,  7.02s/it]
+[36m(ClientAppActor pid=1850009)[0m  56%|█████▌    | 56/100 [06:29<05:01,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  57%|█████▋    | 57/100 [06:36<04:58,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  58%|█████▊    | 58/100 [06:44<04:58,  7.10s/it]
+[36m(ClientAppActor pid=1850009)[0m  59%|█████▉    | 59/100 [06:52<05:11,  7.60s/it]
+[36m(ClientAppActor pid=1850009)[0m  60%|██████    | 60/100 [06:59<04:56,  7.40s/it]                                                 60%|██████    | 60/100 [06:59<04:56,  7.40s/it]
+[36m(ClientAppActor pid=1850009)[0m  61%|██████    | 61/100 [07:07<04:49,  7.43s/it]
+[36m(ClientAppActor pid=1850009)[0m  62%|██████▏   | 62/100 [07:14<04:38,  7.32s/it]
+[36m(ClientAppActor pid=1850009)[0m  63%|██████▎   | 63/100 [07:20<04:21,  7.06s/it]
+[36m(ClientAppActor pid=1850009)[0m  64%|██████▍   | 64/100 [07:29<04:31,  7.55s/it]
+[36m(ClientAppActor pid=1850009)[0m  65%|██████▌   | 65/100 [07:36<04:18,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  66%|██████▌   | 66/100 [07:45<04:28,  7.90s/it]
+[36m(ClientAppActor pid=1850009)[0m  67%|██████▋   | 67/100 [07:55<04:41,  8.52s/it]
+[36m(ClientAppActor pid=1850009)[0m  68%|██████▊   | 68/100 [08:02<04:18,  8.07s/it]
+[36m(ClientAppActor pid=1850009)[0m  69%|██████▉   | 69/100 [08:10<04:09,  8.05s/it]
+[36m(ClientAppActor pid=1850009)[0m  70%|███████   | 70/100 [08:15<03:35,  7.17s/it]                                                 70%|███████   | 70/100 [08:15<03:35,  7.17s/it]
+[36m(ClientAppActor pid=1850009)[0m  71%|███████   | 71/100 [08:21<03:18,  6.85s/it]
+[36m(ClientAppActor pid=1850009)[0m  72%|███████▏  | 72/100 [08:28<03:08,  6.73s/it]
+[36m(ClientAppActor pid=1850009)[0m  73%|███████▎  | 73/100 [08:36<03:12,  7.12s/it]
+[36m(ClientAppActor pid=1850009)[0m  74%|███████▍  | 74/100 [08:43<03:00,  6.95s/it]
+[36m(ClientAppActor pid=1850009)[0m  75%|███████▌  | 75/100 [08:51<03:01,  7.27s/it]
+[36m(ClientAppActor pid=1850009)[0m  76%|███████▌  | 76/100 [08:56<02:42,  6.76s/it]
+[36m(ClientAppActor pid=1850009)[0m  77%|███████▋  | 77/100 [09:02<02:30,  6.53s/it]
+[36m(ClientAppActor pid=1850009)[0m  78%|███████▊  | 78/100 [09:09<02:26,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  79%|███████▉  | 79/100 [09:16<02:22,  6.80s/it]
+[36m(ClientAppActor pid=1850009)[0m  80%|████████  | 80/100 [09:23<02:14,  6.74s/it]                                                 80%|████████  | 80/100 [09:23<02:14,  6.74s/it]
+[36m(ClientAppActor pid=1850009)[0m  81%|████████  | 81/100 [09:31<02:15,  7.15s/it]
+[36m(ClientAppActor pid=1850009)[0m  82%|████████▏ | 82/100 [09:38<02:07,  7.08s/it]
+[36m(ClientAppActor pid=1850009)[0m  83%|████████▎ | 83/100 [09:47<02:09,  7.64s/it]
+[36m(ClientAppActor pid=1850009)[0m  84%|████████▍ | 84/100 [09:54<02:02,  7.66s/it]
+[36m(ClientAppActor pid=1850009)[0m  85%|████████▌ | 85/100 [10:02<01:55,  7.73s/it]
+[36m(ClientAppActor pid=1850009)[0m  86%|████████▌ | 86/100 [10:09<01:43,  7.39s/it]
+[36m(ClientAppActor pid=1850009)[0m  87%|████████▋ | 87/100 [10:15<01:31,  7.01s/it]
+[36m(ClientAppActor pid=1850009)[0m  88%|████████▊ | 88/100 [10:22<01:22,  6.88s/it]
+[36m(ClientAppActor pid=1850009)[0m  89%|████████▉ | 89/100 [10:29<01:16,  6.93s/it]
+[36m(ClientAppActor pid=1850009)[0m  90%|█████████ | 90/100 [10:37<01:14,  7.47s/it]                                                 90%|█████████ | 90/100 [10:37<01:14,  7.47s/it]
+[36m(ClientAppActor pid=1850009)[0m  91%|█████████ | 91/100 [10:45<01:06,  7.38s/it]
+[36m(ClientAppActor pid=1850009)[0m  92%|█████████▏| 92/100 [10:52<01:00,  7.54s/it]
+[36m(ClientAppActor pid=1850009)[0m  93%|█████████▎| 93/100 [10:59<00:50,  7.26s/it]
+[36m(ClientAppActor pid=1850009)[0m  94%|█████████▍| 94/100 [11:05<00:40,  6.75s/it]
+[36m(ClientAppActor pid=1850009)[0m  95%|█████████▌| 95/100 [11:11<00:33,  6.65s/it]
+[36m(ClientAppActor pid=1850009)[0m  96%|█████████▌| 96/100 [11:19<00:27,  6.92s/it]
+[36m(ClientAppActor pid=1850009)[0m  97%|█████████▋| 97/100 [11:27<00:21,  7.25s/it]
+[36m(ClientAppActor pid=1850009)[0m  98%|█████████▊| 98/100 [11:34<00:14,  7.33s/it]
+[36m(ClientAppActor pid=1850009)[0m  99%|█████████▉| 99/100 [11:41<00:07,  7.24s/it]
+[36m(ClientAppActor pid=1850009)[0m 100%|██████████| 100/100 [11:48<00:00,  7.00s/it]                                                 100%|██████████| 100/100 [11:48<00:00,  7.00s/it]
+[36m(ClientAppActor pid=1850009)[0m                                                  100%|██████████| 100/100 [11:48<00:00,  7.00s/it]100%|██████████| 100/100 [11:48<00:00,  7.08s/it]
+
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5828, 'grad_norm': 2.6240813732147217, 'learning_rate': 1e-06, 'epoch': 0.47}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5556, 'grad_norm': 1.555891752243042, 'learning_rate': 1e-06, 'epoch': 0.56}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5405, 'grad_norm': 2.210604429244995, 'learning_rate': 1e-06, 'epoch': 0.65}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5651, 'grad_norm': 1.2029417753219604, 'learning_rate': 1e-06, 'epoch': 0.75}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5233, 'grad_norm': 1.4627379179000854, 'learning_rate': 1e-06, 'epoch': 0.84}
+[36m(ClientAppActor pid=1850009)[0m {'loss': 0.5847, 'grad_norm': 1.6917611360549927, 'learning_rate': 1e-06, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m {'train_runtime': 708.3017, 'train_samples_per_second': 2.259, 'train_steps_per_second': 0.141, 'train_loss': 0.5621922826766967, 'epoch': 0.93}
+[36m(ClientAppActor pid=1850009)[0m 🔒 [Selective FHE] 启动选择性加密引擎...
+[92mINFO [0m:      📊 [Server] Round 5 Aggregated Loss: 0.5691
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.5690911746025085}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {}
+[92mINFO [0m:      
+[92mINFO [0m:      Strategy execution finished in 7595.89s
+[92mINFO [0m:      
+[92mINFO [0m:      Final results:
+[92mINFO [0m:      
+[92mINFO [0m:      	Global Arrays:
+[92mINFO [0m:      		ArrayRecord (0.000 MB)
+[92mINFO [0m:      	
+[92mINFO [0m:      	Aggregated ClientApp-side Train Metrics:
+[92mINFO [0m:      	{ 1: {'train_loss': '6.1411e-01'},
+[92mINFO [0m:      	  2: {'train_loss': '5.9407e-01'},
+[92mINFO [0m:      	  3: {'train_loss': '5.8049e-01'},
+[92mINFO [0m:      	  4: {'train_loss': '5.8377e-01'},
+[92mINFO [0m:      	  5: {'train_loss': '5.6909e-01'}}
+[92mINFO [0m:      	
+[92mINFO [0m:      	Aggregated ClientApp-side Evaluate Metrics:
+[92mINFO [0m:      	{}
+[92mINFO [0m:      	
+[92mINFO [0m:      	ServerApp-side Evaluate Metrics:
+[92mINFO [0m:      	{0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}}
+[92mINFO [0m:      
+[36m(ClientAppActor pid=1850009)[0m [93mWARNING [0m:   Manually terminating ClientAppActor
+
+[36m(ClientAppActor pid=1850009)[0m ✅ [Selective FHE] 分流加密完成！耗时: 14.96 秒 (体积大幅缩减)
+[36m(ClientAppActor pid=1850009)[0m 🗑️ [Client 9] 已彻底销毁本地明文权重: /tmp/flwr_client_9_3ua45k3l/adapter_model.bin
+[36m(ClientAppActor pid=1850009)[0m ☁️ [Client 9] Uploading hybrid parameters to IPFS...
+
+📥 [Server] Round 5: Processing 2 replies via IPFS...
+[36m(ClientAppActor pid=1850009)[0m ✅ [Client 9] Upload Success! CID: QmamV3aY55oKcj6nbGBLT7XPip1WBLAvDW6rV61MMiLrZz
+🔒 [Server] 成功读取混合模型，来自 CID: QmVqrmCbXdCFbBSJzdYvX5r1yTWAMLja79oMs9uhKox3Sn
+🔒 [Server] 成功读取混合模型，来自 CID: QmamV3aY55oKcj6nbGBLT7XPip1WBLAvDW6rV61MMiLrZz
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.53 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmVHt7cbJjQEcpj1urWjBV166vfbMTprRqhR4LmkuuCsXV
+
+🛡️ [Server] 轮次 5 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。

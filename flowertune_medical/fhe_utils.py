@@ -1,88 +1,99 @@
-import tenseal as ts
 import os
 import pickle
+import numpy as np
+import tenseal as ts
 import torch
-from safetensors.torch import load_file
-import time
 
-class FullFHEHandler:
+class SelectiveFHEHandler:
     def __init__(self, key_path="global_fhe_keys.pkl"):
-        """初始化时不再随机生成密钥，而是加载全局统一的密钥文件"""
+        self.key_path = key_path
         if not os.path.exists(key_path):
-            raise FileNotFoundError(f"🚨 找不到全局密钥文件 {key_path}！请先运行 generate_keys.py")
-            
-        print(f"🔑 [FHE] 正在加载全局密钥: {key_path}")
-        with open(key_path, "rb") as f:
-            context_bytes = f.read()
-        self.context = ts.context_from(context_bytes)
+            self._generate_keys()
+        with open(self.key_path, "rb") as f:
+            keys = pickle.load(f)
+        self.context = ts.context_from(keys["secret_context"])
 
-    def encrypt_full_model(self, temp_dir, output_dir):
-        # ... (这里的代码和之前完全一样，只是 context 变成了共享的) ...
-        safetensors_path = os.path.join(temp_dir, "adapter_model.safetensors")
-        bin_path = os.path.join(temp_dir, "adapter_model.bin")
+    def _generate_keys(self):
+        print(f"🔑 [FHE] 正在生成全局 TenSEAL 密钥...")
+        context = ts.context(ts.SCHEME_TYPE.CKKS, poly_modulus_degree=8192, coeff_mod_bit_sizes=[60, 40, 40, 60])
+        context.global_scale = 2**40
+        context.generate_galois_keys()
+        with open(self.key_path, "wb") as f:
+            pickle.dump({
+                "secret_context": context.serialize(save_secret_key=True),
+                "public_context": context.serialize(save_secret_key=False)
+            }, f)
+
+    def should_encrypt(self, layer_name: str) -> bool:
+        """🌟 核心创新点：智能分流路由器"""
+        # 只拦截包含 q_proj 或 v_proj 的层进行重度同态加密
+        return "q_proj" in layer_name or "v_proj" in layer_name
+
+    def encrypt_full_model(self, model_dir, output_dir):
+        import safetensors.torch
+        model_path = os.path.join(model_dir, "adapter_model.safetensors")
+        if not os.path.exists(model_path):
+            model_path = os.path.join(model_dir, "adapter_model.bin")
         
-        if os.path.exists(safetensors_path):
-            weights = load_file(safetensors_path)
-            plaintext_path = safetensors_path
-        elif os.path.exists(bin_path):
-            weights = torch.load(bin_path, map_location="cpu", weights_only=True) 
-            plaintext_path = bin_path
+        if model_path.endswith(".safetensors"):
+            state_dict = safetensors.torch.load_file(model_path)
         else:
-            raise FileNotFoundError(f"🚨 找不到模型文件！")
+            state_dict = torch.load(model_path, weights_only=True)
 
         encrypted_weights = {}
+        unencrypted_weights = {}
         shapes_info = {}
-        
+
+        print("🔒 [Selective FHE] 启动选择性加密引擎...")
+        import time
         start_time = time.time()
-        for layer_name, tensor in weights.items():
-            flat_list = tensor.flatten().tolist()
-            enc_vector = ts.ckks_vector(self.context, flat_list)
-            encrypted_weights[layer_name] = enc_vector.serialize()
-            shapes_info[layer_name] = tensor.shape
-            
-        enc_data = {
-            "weights": encrypted_weights,
+
+        for name, tensor in state_dict.items():
+            flat_array = tensor.cpu().numpy().astype(np.float64).flatten()
+            shapes_info[name] = tuple(tensor.shape) # 确保shape可以被序列化
+
+            if self.should_encrypt(name):
+                # 敏感层 -> 走同态加密通道
+                enc_vector = ts.ckks_vector(self.context, flat_array.tolist())
+                encrypted_weights[name] = enc_vector.serialize()
+            else:
+                # 非敏感层 -> 走轻量级明文通道
+                unencrypted_weights[name] = flat_array
+
+        output_data = {
+            "weights": encrypted_weights,                  # 只有 q/v 层的密文
+            "unencrypted_weights": unencrypted_weights,    # 其余层的明文数组
             "shapes": shapes_info,
             "public_context": self.context.serialize(save_secret_key=False)
         }
-        
-        enc_file_path = os.path.join(output_dir, "full_encrypted_model.pkl")
-        with open(enc_file_path, "wb") as f:
-            pickle.dump(enc_data, f)
-            
-        print(f"✅ [FHE] 加密完成！耗时: {time.time() - start_time:.2f} 秒")
-        return plaintext_path
 
-    # ==========================================
-    # 🌟 [新增核心功能] 密文解密还原
-    # ==========================================
-    def decrypt_model(self, enc_file_path):
-        """读取下载的密文文件，使用本地私钥解密，并还原为 PyTorch 张量字典"""
-        print(f"🔓 [FHE] 正在读取全局密文进行解密...")
-        start_time = time.time()
+        out_path = os.path.join(output_dir, "full_encrypted_model.pkl")
+        with open(out_path, "wb") as f:
+            pickle.dump(output_data, f)
         
-        with open(enc_file_path, "rb") as f:
+        print(f"✅ [Selective FHE] 分流加密完成！耗时: {time.time()-start_time:.2f} 秒 (体积大幅缩减)")
+        return model_path
+
+    def decrypt_model(self, fhe_path):
+        with open(fhe_path, "rb") as f:
             enc_data = pickle.load(f)
-            
-        encrypted_weights = enc_data["weights"]
+
+        decrypted_state_dict = {}
         shapes_info = enc_data["shapes"]
         
-        decrypted_state_dict = {}
-        
-        for layer_name, enc_bytes in encrypted_weights.items():
-            # 1. 将字节流反序列化为 TenSEAL 密文对象
+        import time
+        start_time = time.time()
+
+        # 1. 还原并解密敏感层
+        for name, enc_bytes in enc_data["weights"].items():
             enc_vector = ts.ckks_vector_from(self.context, enc_bytes)
-            
-            # 2. 核心：执行同态解密！(因为 self.context 里有私钥)
-            flat_list = enc_vector.decrypt()
-            
-            # 3. 还原回原本的 Tensor 形状
-            tensor_shape = shapes_info[layer_name]
-            tensor = torch.tensor(flat_list).reshape(tensor_shape)
-            
-            # 由于 CKKS 方案解密出来是 float64 的近似浮点数，
-            # 需要转回大模型常用的 bfloat16 或 float32
-            decrypted_state_dict[layer_name] = tensor.to(torch.bfloat16)
-            
-        print(f"✅ [FHE] 解密还原完成！总耗时: {time.time() - start_time:.2f} 秒")
+            dec_list = enc_vector.decrypt()
+            dec_array = np.array(dec_list, dtype=np.float32)
+            decrypted_state_dict[name] = torch.tensor(dec_array.reshape(shapes_info[name]))
+        
+        # 2. 直接还原非敏感明文层
+        for name, flat_array in enc_data.get("unencrypted_weights", {}).items():
+            decrypted_state_dict[name] = torch.tensor(flat_array.astype(np.float32).reshape(shapes_info[name]))
+
+        print(f"✅ [Selective FHE] 混合解密还原完成！总耗时: {time.time()-start_time:.2f} 秒")
         return decrypted_state_dict
