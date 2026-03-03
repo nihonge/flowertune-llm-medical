@@ -1,0 +1,77 @@
+(ClientAppActor pid=2153277) If you need to use those operations, try increasing the poly_modulus parameter, to fit your input.
+(ClientAppActor pid=2153277) WARNING: The input does not fit in a single ciphertext, and some operations will be disabled.
+(ClientAppActor pid=2153277) The following operations are disabled in this setup: matmul, matmul_plain, enc_matmul_plain, conv2d_im2col.
+(ClientAppActor pid=2153277) If you need to use those operations, try increasing the poly_modulus parameter, to fit your input.
+(ClientAppActor pid=2153277) WARNING: The input does not fit in a single ciphertext, and some operations will be disabled.
+(ClientAppActor pid=2153277) The following operations are disabled in this setup: matmul, matmul_plain, enc_matmul_plain, conv2d_im2col.
+(ClientAppActor pid=2153277) If you need to use those operations, try increasing the poly_modulus parameter, to fit your input.
+(ClientAppActor pid=2153277) ✅ [Selective FHE] 分流加密完成！耗时: 15.02 秒 (体积大幅缩减)
+(ClientAppActor pid=2153277) 🗑️ [Client 15] 已彻底销毁本地明文权重: /tmp/flwr_client_15_exh2u169/adapter_model.bin
+(ClientAppActor pid=2153277) ☁️ [Client 15] Uploading hybrid parameters to IPFS...
+(ClientAppActor pid=2153277) ✅ [Client 15] Upload Success! CID: QmTtEKhMfBbrp2q1meMoB3c5a7W1e34gdahp6ACqKutYpZ
+INFO :      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
+
+📥 [Server] Round 15: Processing 2 replies via IPFS...
+🔒 [Server] 成功读取混合模型，来自 CID: Qmb7CJizS4paJAu2EEQw7rMezTJNwGGh5CisbUhTny881g
+🔒 [Server] 成功读取混合模型，来自 CID: QmTtEKhMfBbrp2q1meMoB3c5a7W1e34gdahp6ACqKutYpZ
+
+🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
+✅ [Server] 混合聚合彻底完成！总耗时: 7.80 秒
+💾 [Server] 正在打包全局混合模型，准备上传 IPFS (体积大幅减小)...
+☁️ [Server] 正在上传至 IPFS...
+✅ [Server] 上传成功！Global CID: QmTSszNKWhjBfjD2FQSjGcj1xMuViYoaAeGJgHZzzGWYx3
+INFO :      📊 [Server] Round 15 Aggregated Loss: 0.5334
+INFO :          └──> Aggregated MetricRecord: {'train_loss': 0.5334391599846168}
+INFO :      Global evaluation
+
+🛡️ [Server] 轮次 15 评估阶段。
+🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
+🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
+INFO :          └──> MetricRecord: {}
+INFO :      
+INFO :      Strategy execution finished in 23478.73s
+INFO :      
+INFO :      Final results:
+INFO :      
+INFO :          Global Arrays:
+INFO :                  ArrayRecord (0.000 MB)
+INFO :      
+INFO :          Aggregated ClientApp-side Train Metrics:
+INFO :          { 1: {'train_loss': '6.1440e-01'},
+INFO :            2: {'train_loss': '5.8913e-01'},
+INFO :            3: {'train_loss': '5.7361e-01'},
+INFO :            4: {'train_loss': '5.6631e-01'},
+INFO :            5: {'train_loss': '5.6724e-01'},
+INFO :            6: {'train_loss': '5.6083e-01'},
+INFO :            7: {'train_loss': '5.4229e-01'},
+INFO :            8: {'train_loss': '5.6121e-01'},
+INFO :            9: {'train_loss': '5.5878e-01'},
+INFO :            10: {'train_loss': '5.4467e-01'},
+INFO :            11: {'train_loss': '5.5631e-01'},
+INFO :            12: {'train_loss': '5.4751e-01'},
+INFO :            13: {'train_loss': '5.5353e-01'},
+INFO :            14: {'train_loss': '5.4168e-01'},
+INFO :            15: {'train_loss': '5.3344e-01'}}
+INFO :      
+INFO :          Aggregated ClientApp-side Evaluate Metrics:
+INFO :          {}
+INFO :      
+INFO :          ServerApp-side Evaluate Metrics:
+INFO :          { 0: {},
+INFO :            1: {},
+INFO :            2: {},
+INFO :            3: {},
+INFO :            4: {},
+INFO :            5: {},
+INFO :            6: {},
+INFO :            7: {},
+INFO :            8: {},
+INFO :            9: {},
+INFO :            10: {},
+INFO :            11: {},
+INFO :            12: {},
+INFO :            13: {},
+INFO :            14: {},
+INFO :            15: {}}
+INFO :      
+(ClientAppActor pid=2153277) WARNING :   Manually terminating ClientAppActor

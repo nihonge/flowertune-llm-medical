@@ -70,7 +70,7 @@ strategy.fraction-train = 0.1
 strategy.fraction-evaluate = 0.0
 
 # 💥 增加到 5 轮，彻底稳定全局聚合的收敛趋势
-num-server-rounds = 5
+num-server-rounds = 15
 
 # Dataset config (static for FlowerTune LLM Leaderboard)
 [tool.flwr.app.config.static]
