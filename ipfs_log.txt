@@ -1,0 +1,85 @@
+Initializing daemon...
+Kubo version: 0.27.0
+Repo version: 15
+System version: amd64/linux
+Golang version: go1.21.7
+2026/03/04 20:28:10 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+Swarm listening on /ip4/10.255.255.254/tcp/4001
+Swarm listening on /ip4/10.255.255.254/udp/4001/quic-v1
+Swarm listening on /ip4/10.255.255.254/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/127.0.0.1/tcp/4001
+Swarm listening on /ip4/127.0.0.1/udp/4001/quic-v1
+Swarm listening on /ip4/127.0.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/172.17.0.1/tcp/4001
+Swarm listening on /ip4/172.17.0.1/udp/4001/quic-v1
+Swarm listening on /ip4/172.17.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/172.18.0.1/tcp/4001
+Swarm listening on /ip4/172.18.0.1/udp/4001/quic-v1
+Swarm listening on /ip4/172.18.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/172.19.0.1/tcp/4001
+Swarm listening on /ip4/172.19.0.1/udp/4001/quic-v1
+Swarm listening on /ip4/172.19.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/172.20.12.225/tcp/4001
+Swarm listening on /ip4/172.20.12.225/udp/4001/quic-v1
+Swarm listening on /ip4/172.20.12.225/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/172.21.0.1/tcp/4001
+Swarm listening on /ip4/172.21.0.1/udp/4001/quic-v1
+Swarm listening on /ip4/172.21.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip4/192.168.58.1/tcp/4001
+Swarm listening on /ip4/192.168.58.1/udp/4001/quic-v1
+Swarm listening on /ip4/192.168.58.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /ip6/::1/tcp/4001
+Swarm listening on /ip6/::1/udp/4001/quic-v1
+Swarm listening on /ip6/::1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm listening on /p2p-circuit
+Swarm announcing /ip4/127.0.0.1/tcp/4001
+Swarm announcing /ip4/127.0.0.1/udp/4001/quic-v1
+Swarm announcing /ip4/127.0.0.1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm announcing /ip4/172.20.12.225/tcp/4001
+Swarm announcing /ip4/172.20.12.225/udp/4001/quic-v1
+Swarm announcing /ip4/172.20.12.225/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm announcing /ip4/222.29.151.94/udp/54691/quic-v1
+Swarm announcing /ip4/222.29.151.94/udp/54691/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+Swarm announcing /ip6/::1/tcp/4001
+Swarm announcing /ip6/::1/udp/4001/quic-v1
+Swarm announcing /ip6/::1/udp/4001/quic-v1/webtransport/certhash/uEiCB91Sg3dHoXvTTVR8PMA5X0Fo2PdmbXpBDP1S5pt5k9g/certhash/uEiD_rbPlCzuLJcBJMburLi1L2EVX4BFx3fQXUK46-aw_DQ
+RPC API server listening on /ip4/127.0.0.1/tcp/5001
+WebUI: http://127.0.0.1:5001/webui
+Gateway server listening on /ip4/127.0.0.1/tcp/8080
+Daemon is ready
+2026/03/04 20:29:18 websocket: failed to close network connection: close tcp 172.20.12.225:33170->51.81.93.51:443: use of closed network connection
+2026/03/04 20:33:41 websocket: failed to close network connection: close tcp 172.20.12.225:36768->54.38.47.166:443: use of closed network connection
+2026/03/04 20:35:25 websocket: failed to close network connection: close tcp 172.20.12.225:39460->51.81.244.165:443: use of closed network connection
+2026/03/04 20:35:46 websocket: failed to close network connection: close tcp 172.20.12.225:50538->54.38.47.166:443: use of closed network connection
+2026/03/04 20:36:51 websocket: failed to close network connection: close tcp 172.20.12.225:40222->54.38.47.166:443: use of closed network connection
+2026/03/04 20:38:13 websocket: failed to close network connection: close tcp 172.20.12.225:41658->147.75.87.177:443: use of closed network connection
+2026/03/04 20:38:13 websocket: failed to close network connection: close tcp 172.20.12.225:41662->147.75.87.177:443: use of closed network connection
+2026/03/04 20:38:14 websocket: failed to close network connection: close tcp 172.20.12.225:47170->51.81.93.51:443: use of closed network connection
+2026/03/04 20:38:48 websocket: failed to close network connection: close tcp 172.20.12.225:58742->147.135.44.132:443: use of closed network connection
+2026/03/04 20:43:20 websocket: failed to close network connection: close tcp 172.20.12.225:44068->3.221.34.218:443: use of closed network connection
+2026/03/04 20:50:52 websocket: failed to close network connection: close tcp 172.20.12.225:56652->51.81.93.51:443: use of closed network connection
+2026/03/04 20:53:13 websocket: failed to close network connection: close tcp 172.20.12.225:59344->3.221.34.218:443: use of closed network connection
+2026/03/04 20:54:30 websocket: failed to close network connection: close tcp 172.20.12.225:46456->3.221.34.218:443: use of closed network connection
+2026/03/04 20:55:33 websocket: failed to close network connection: close tcp 172.20.12.225:56698->51.81.93.51:443: use of closed network connection
+2026/03/04 20:57:55 websocket: failed to close network connection: close tcp 172.20.12.225:56344->54.38.47.166:443: use of closed network connection
+2026/03/04 20:58:21 websocket: failed to close network connection: close tcp 172.20.12.225:34856->51.81.93.51:443: use of closed network connection
+2026/03/04 20:58:22 websocket: failed to close network connection: close tcp 172.20.12.225:43416->54.38.47.166:443: use of closed network connection
+2026/03/04 20:59:01 websocket: failed to close network connection: close tcp 172.20.12.225:53844->54.38.47.166:443: use of closed network connection
+2026/03/04 21:01:09 websocket: failed to close network connection: close tcp 172.20.12.225:42814->54.38.47.166:443: use of closed network connection
+2026/03/04 21:01:49 websocket: failed to close network connection: close tcp 172.20.12.225:36538->3.221.34.218:443: use of closed network connection
+2026/03/04 21:02:11 websocket: failed to close network connection: close tcp 172.20.12.225:60672->54.38.47.166:443: use of closed network connection
+2026/03/04 21:03:56 websocket: failed to close network connection: close tcp 172.20.12.225:51552->40.160.9.115:443: use of closed network connection
+2026/03/04 21:05:11 websocket: failed to close network connection: close tcp 172.20.12.225:44732->35.71.190.33:4001: use of closed network connection
+2026/03/04 21:07:53 websocket: failed to close network connection: close tcp 172.20.12.225:40832->54.38.47.166:443: use of closed network connection
+2026/03/04 21:08:06 websocket: failed to close network connection: close tcp 172.20.12.225:39442->51.81.93.51:443: use of closed network connection
+2026/03/04 21:08:07 websocket: failed to close network connection: close tcp 172.20.12.225:42964->147.135.44.132:443: use of closed network connection
+2026/03/04 21:10:18 websocket: failed to close network connection: close tcp 172.20.12.225:47750->3.221.34.218:443: use of closed network connection
+2026/03/04 21:12:54 websocket: failed to close network connection: close tcp 172.20.12.225:48800->3.221.34.218:443: use of closed network connection
+2026/03/04 21:13:07 websocket: failed to close network connection: close tcp 172.20.12.225:60426->54.38.47.166:443: use of closed network connection
+2026/03/04 21:15:06 websocket: failed to close network connection: close tcp 172.20.12.225:40454->83.173.236.97:443: use of closed network connection
+2026/03/04 21:15:14 websocket: failed to close network connection: close tcp 172.20.12.225:48794->54.38.47.166:443: use of closed network connection
+2026/03/04 21:16:41 websocket: failed to close network connection: close tcp 172.20.12.225:35922->54.38.47.166:443: use of closed network connection
+2026/03/04 21:17:51 websocket: failed to close network connection: close tcp 172.20.12.225:51552->54.38.47.166:443: use of closed network connection
+2026/03/04 21:22:29 websocket: failed to close network connection: close tcp 172.20.12.225:51864->37.153.0.3:443: use of closed network connection
+2026/03/04 21:22:46 websocket: failed to close network connection: close tcp 172.20.12.225:36726->54.38.47.166:443: use of closed network connection
+2026/03/04 21:22:48 websocket: failed to close network connection: close tcp 172.20.12.225:53422->51.81.93.51:443: use of closed network connection

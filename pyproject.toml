@@ -60,7 +60,7 @@ train.training-arguments.gradient-accumulation-steps = 1
 # 💥 [火力全开配置]：让 Loss 真实下降的黄金参数
 train.training-arguments.logging-steps = 10
 train.training-arguments.num-train-epochs = 1
-train.training-arguments.max-steps = 100       # 暴增到 100 步，让梯度真实下降
+train.training-arguments.max-steps = 5       # 暴增到 100 步，让梯度真实下降
 train.training-arguments.save-steps = 100      # 同步修改，只在最后保存
 train.training-arguments.save-total-limit = 10
 train.training-arguments.gradient-checkpointing = true
@@ -70,7 +70,7 @@ strategy.fraction-train = 0.1
 strategy.fraction-evaluate = 0.0
 
 # 💥 增加到 5 轮，彻底稳定全局聚合的收敛趋势
-num-server-rounds = 15
+num-server-rounds = 10
 
 # Dataset config (static for FlowerTune LLM Leaderboard)
 [tool.flwr.app.config.static]

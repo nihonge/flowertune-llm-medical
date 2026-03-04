@@ -15,6 +15,8 @@ from flwr.serverapp.strategy import FedAvg
 from flowertune_medical.ipfs_handler import IPFSHandler
 import tenseal as ts
 
+# 🌟 区块链融合：引入你刚刚写好的区块链中枢
+from flowertune_medical.blockchain_handler import BlockchainHandler
 
 class CommunicationTracker:
     def __init__(self):
@@ -41,14 +43,17 @@ class CommunicationTracker:
 
 
 class FlowerTuneLlm(FedAvg):
-    """Selective FHE-enabled Strategy."""
+    """Selective FHE-enabled Strategy with Blockchain Access Control."""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.comm_tracker = CommunicationTracker()
         self.ipfs = IPFSHandler()
-        # 保持记忆，解决失忆 Bug
         self.current_global_cid = "FAIL"
+        
+        # 🌟 区块链融合：Server 启动时连上以太坊
+        print("🔗 [Server] 正在初始化区块链智能合约连接...")
+        self.bc = BlockchainHandler()
 
     def configure_train(
         self, server_round: int, arrays: ArrayRecord, config: ConfigRecord, grid: Grid
@@ -70,6 +75,9 @@ class FlowerTuneLlm(FedAvg):
         os.makedirs(download_base_dir, exist_ok=True)
         
         client_encrypted_data = []
+        
+        # 🌟 区块链融合：准备一个列表，记录本轮成功做出贡献的 Client 的链上地址
+        active_client_addresses = []
 
         print(f"\n📥 [Server] Round {server_round}: Processing {len(list(replies))} replies via IPFS...")
 
@@ -86,9 +94,12 @@ class FlowerTuneLlm(FedAvg):
                 client_loss = 0.0
 
             cid = "FAIL"
+            client_eth_addr = ""
             if "configs" in msg.content.config_records:
                 config_rec = msg.content.config_records["configs"]
                 cid = config_rec.get("ipfs_cid", "FAIL")
+                # 🌟 区块链融合：提取 Client 汇报上来的以太坊地址
+                client_eth_addr = config_rec.get("eth_address", "")
 
             if cid == "FAIL" or cid == "UPLOAD_FAILED":
                 continue
@@ -104,6 +115,10 @@ class FlowerTuneLlm(FedAvg):
                             enc_data = pickle.load(f)
                         client_encrypted_data.append((enc_data, num_examples))
                         loss_results.append((client_loss, num_examples))
+                        
+                        # 🌟 区块链融合：只有真正被解密和聚合成功的数据，其提供者才算作有效贡献！
+                        if client_eth_addr:
+                            active_client_addresses.append(client_eth_addr)
                     else:
                         log(WARN, f"🚨 模型文件 {fhe_path} 不存在！")
                 except Exception as e:
@@ -175,6 +190,14 @@ class FlowerTuneLlm(FedAvg):
         if global_cid:
              print(f"✅ [Server] 上传成功！Global CID: {global_cid}")
              self.current_global_cid = global_cid
+             
+             # 🌟 区块链融合：一锤定音！将本轮全局 CID 和参与者的地址一起钉死在区块链上
+             try:
+                 print(f"💎 [Server] 触发智能合约！正在为 {len(active_client_addresses)} 个诚实节点发放贡献度...")
+                 self.bc.upload_cid(global_cid, active_client_addresses)
+             except Exception as e:
+                 print(f"⚠️ [Server] 警告：区块链存证失败 (不影响模型主线): {e}")
+                 
         else:
              print("❌ [Server] 上传失败！")
              self.current_global_cid = "UPLOAD_FAILED"
