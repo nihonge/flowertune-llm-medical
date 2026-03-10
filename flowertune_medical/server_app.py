@@ -35,8 +35,11 @@ def main(grid: Grid, context: Context) -> None:
     arrays = ArrayRecord(get_peft_model_state_dict(init_model))
 
     # Define strategy
+    # 🌟 修改点：将 num_rounds 和 save_path 传给自定义的 FlowerTuneLlm
     strategy = FlowerTuneLlm(
-        fraction_train=cfg.strategy.fraction_train,
+        num_rounds=num_rounds,
+        save_path=save_path,
+        fraction_train=cfg.strategy.fraction_train,  # ✅ 改回 fraction_train
         fraction_evaluate=cfg.strategy.fraction_evaluate,
     )
 

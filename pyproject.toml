@@ -57,12 +57,12 @@ train.training-arguments.learning-rate = ""
 train.training-arguments.per-device-train-batch-size = 16
 train.training-arguments.gradient-accumulation-steps = 1
 
-# 💥 [火力全开配置]：让 Loss 真实下降的黄金参数
+# 🛡️ [正式学术配置]：按完整的数据集 Epoch 进行本地微调
 train.training-arguments.logging-steps = 10
-train.training-arguments.num-train-epochs = 1
-train.training-arguments.max-steps = 5       # 暴增到 100 步，让梯度真实下降
-train.training-arguments.save-steps = 100      # 同步修改，只在最后保存
-train.training-arguments.save-total-limit = 10
+train.training-arguments.num-train-epochs = 1  # 每个 Client 每轮在本地完整遍历 1 遍自己的数据
+# train.training-arguments.max-steps = 100     # 🚨 删掉或注释掉这一行！把控制权交还给 Epoch
+# train.training-arguments.save-steps = 100    # 🚨 同样删掉或注释掉
+train.training-arguments.save-strategy = "no"  # 联邦学习由 Server 统一保存，Client 本地不需要存 checkpoint
 train.training-arguments.gradient-checkpointing = true
 train.training-arguments.lr-scheduler-type = "constant"
 
@@ -70,7 +70,7 @@ strategy.fraction-train = 0.1
 strategy.fraction-evaluate = 0.0
 
 # 💥 增加到 5 轮，彻底稳定全局聚合的收敛趋势
-num-server-rounds = 10
+num-server-rounds = 30
 
 # Dataset config (static for FlowerTune LLM Leaderboard)
 [tool.flwr.app.config.static]
