@@ -1,543 +1,0 @@
-Loading project configuration... 
-Success
-/home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/websockets/legacy/__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions
-  warnings.warn(  # deprecated in 14.0 - 2024-11-09
-/home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
-  warnings.warn(
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:06<00:13,  6.71s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:14<00:07,  7.25s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:21<00:00,  7.11s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:21<00:00,  7.09s/it]
-[93mWARNING [0m:   fraction_evaluate is set to 0.0. Federated evaluation will be skipped.
-[92mINFO [0m:      Starting FlowerTuneLlm strategy:
-[92mINFO [0m:      	├── Number of rounds: 5
-[92mINFO [0m:      	├── ArrayRecord (52.02 MB)
-[92mINFO [0m:      	├── ConfigRecord (train): {'save_path': /home/nihonge/20251229/flowertune-llm-medical/results/2026-03-09_20-30-34}
-[92mINFO [0m:      	├── ConfigRecord (evaluate): (empty!)
-[92mINFO [0m:      	├──> Sampling:
-[92mINFO [0m:      	│	├──Fraction: train (0.10) | evaluate ( 0.00)
-[92mINFO [0m:      	│	├──Minimum nodes: train (2) | evaluate (0)
-[92mINFO [0m:      	│	└──Minimum available nodes: 2
-[92mINFO [0m:      	└──> Keys in records:
-[92mINFO [0m:      		├── Weighted by: 'num-examples'
-[92mINFO [0m:      		├── ArrayRecord key: 'arrays'
-[92mINFO [0m:      		└── ConfigRecord key: 'config'
-[92mINFO [0m:      
-[92mINFO [0m:      Initial global evaluation results: {}
-[92mINFO [0m:      
-[92mINFO [0m:      [ROUND 1/5]
-[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
-[92mINFO [0m:      Communication budget: used 104.05 MB (+104.05 MB this round) / 200,000 MB
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/websockets/legacy/__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions
-[36m(ClientAppActor pid=1717668)[0m   warnings.warn(  # deprecated in 14.0 - 2024-11-09
-[36m(pid=gcs_server)[0m [2026-03-09 20:31:04,752 E 1716281 1716281] (gcs_server) gcs_server.cc:302: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[33m(raylet)[0m [2026-03-09 20:31:05,494 E 1716427 1716427] (raylet) main.cc:975: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(pid=1716514)[0m [2026-03-09 20:31:05,865 E 1716514 1717002] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[2026-03-09 20:31:06,069 E 1716180 1716504] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m [2026-03-09 20:31:06,594 E 1717668 1717708] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14[32m [repeated 14x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:07,  3.64s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:07<00:03,  3.60s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:10<00:00,  3.27s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:10<00:00,  3.36s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:07<01:06,  7.41s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:54,  6.82s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:20<00:46,  6.62s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:26<00:38,  6.42s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:33<00:34,  6.87s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:41<00:28,  7.08s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:47<00:20,  6.76s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:55<00:13,  7.00s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:03<00:07,  7.35s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:11<00:00,  7.77s/it]                                               100%|██████████| 10/10 [01:11<00:00,  7.77s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:12<00:00,  7.77s/it]100%|██████████| 10/10 [01:12<00:00,  7.21s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.87s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.90s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.82s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.84s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<01:00,  6.69s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:12<00:50,  6.25s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:19<00:44,  6.38s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:26<00:40,  6.82s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:32<00:32,  6.54s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:39<00:26,  6.71s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:46<00:20,  6.76s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:53<00:13,  6.65s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [00:59<00:06,  6.62s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:05<00:00,  6.30s/it]                                               100%|██████████| 10/10 [01:05<00:00,  6.30s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:05<00:00,  6.30s/it]100%|██████████| 10/10 [01:05<00:00,  6.54s/it]
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-/home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-  tar.extractall(path=target_dir)
-[92mINFO [0m:      📊 [Server] Round 1 Aggregated Loss: 0.7198
-[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.7198}
-[92mINFO [0m:      Global evaluation
-[92mINFO [0m:      	└──> MetricRecord: {}
-[92mINFO [0m:      
-[92mINFO [0m:      [ROUND 2/5]
-[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:09,  4.65s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:07<00:03,  3.41s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  2.94s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<00:59,  6.62s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:14<00:57,  7.19s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:21<00:51,  7.32s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:29<00:45,  7.58s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:37<00:38,  7.60s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:44<00:29,  7.35s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:50<00:21,  7.04s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:59<00:15,  7.52s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:05<00:07,  7.07s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:11<00:00,  6.74s/it]                                               100%|██████████| 10/10 [01:11<00:00,  6.74s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:11<00:00,  6.74s/it]100%|██████████| 10/10 [01:11<00:00,  7.14s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.37s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:02,  2.99s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.62s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.76s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<01:00,  6.74s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:54,  6.81s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:20<00:46,  6.63s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:27<00:42,  7.15s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:34<00:35,  7.10s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:41<00:28,  7.04s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:47<00:19,  6.53s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:54<00:13,  6.73s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [00:59<00:06,  6.32s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:06<00:00,  6.40s/it]                                               100%|██████████| 10/10 [01:06<00:00,  6.40s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:06<00:00,  6.40s/it]100%|██████████| 10/10 [01:06<00:00,  6.67s/it]
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[92mINFO [0m:      📊 [Server] Round 2 Aggregated Loss: 0.6414
-[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.64145}
-[92mINFO [0m:      Global evaluation
-[92mINFO [0m:      	└──> MetricRecord: {}
-[92mINFO [0m:      
-[92mINFO [0m:      [ROUND 3/5]
-[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.92s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:08<00:04,  4.53s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  4.37s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  4.25s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:07<01:05,  7.24s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:54,  6.82s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:20<00:47,  6.85s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:28<00:44,  7.34s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:37<00:38,  7.79s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:45<00:32,  8.05s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:53<00:24,  8.02s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [01:01<00:16,  8.00s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:08<00:07,  7.65s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:15<00:00,  7.45s/it]                                               100%|██████████| 10/10 [01:15<00:00,  7.45s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:15<00:00,  7.45s/it]100%|██████████| 10/10 [01:15<00:00,  7.59s/it]
-🔗 [Server] 正在初始化区块链智能合约连接...
-
-🛡️ [Server] 轮次 0 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 🆕 [Client 2] 未收到全局 CID (或是第1轮)，使用基座模型开局。
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 2] 准备就绪，开始本地微调 (Round 1)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.7226, 'grad_norm': 1.6619104146957397, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 72.1277, 'train_samples_per_second': 2.218, 'train_steps_per_second': 0.139, 'train_loss': 0.7225680351257324, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 2] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 2] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 2] 上传成功! CID: QmZJEEyM711aZUNM7uJoWofwGup7oyj4WyDxn5RZHMKv9Q
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 2] 本轮显存与缓存已彻底清理！
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 🆕 [Client 7] 未收到全局 CID (或是第1轮)，使用基座模型开局。
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 7] 准备就绪，开始本地微调 (Round 1)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.717, 'grad_norm': 1.7941035032272339, 'learning_rate': 4.532091636218621e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 65.3626, 'train_samples_per_second': 2.448, 'train_steps_per_second': 0.153, 'train_loss': 0.7169816017150878, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 7] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 7] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 7] 上传成功! CID: QmSw5z2efpTGye1DEm2k9JwYf7gXJ2s6Z1EgVNz6jML9Db
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 7] 本轮显存与缓存已彻底清理！
-
-📥 [Server] Round 1: Processing 2 replies via IPFS...
-🔒 [Server] 成功读取混合模型，来自 CID: QmZJEEyM711aZUNM7uJoWofwGup7oyj4WyDxn5RZHMKv9Q
-🔒 [Server] 成功读取混合模型，来自 CID: QmSw5z2efpTGye1DEm2k9JwYf7gXJ2s6Z1EgVNz6jML9Db
-
-🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
-✅ [Server] 混合聚合彻底完成！总耗时: 9.08 秒
-🔓 [Server] 阶段 I (第1/5轮)：微调期，跳过 ABE 确权。
-🔓 [Server] 伪装文件直接放行 (Client将直接执行同态解密)...
-☁️ [Server] 正在将模型上传至 IPFS...
-✅ [Server] 上传成功！Global CID: QmVLBSzytX8DF4AnhDnkoMHtALonsPzhV6iWGHnH9tf4o5
-🔗 [Blockchain] 中间态模型 CID 上链存证...
-🔗 [Blockchain] 正在将最新模型 CID 上链存证...
-✅ [Blockchain] 存证成功！交易已被打包进区块 (消耗 Gas: 23156)
-📊 [Server] 自动绘图完成！本轮收敛曲线已更新至: ./results/loss_plots/loss_curve_round_1.png
-
-🛡️ [Server] 轮次 1 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 11] 收到全局 CID: QmVLBSzytX8DF4AnhDnkoMHtALonsPzhV6iWGHnH9tf4o5，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 11] 阶段 I：协作微调期 (第2/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 11] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 11] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 11] 准备就绪，开始本地微调 (Round 2)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6412, 'grad_norm': 1.3799744844436646, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 71.4363, 'train_samples_per_second': 2.24, 'train_steps_per_second': 0.14, 'train_loss': 0.6412371158599853, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 11] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 11] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 11] 上传成功! CID: QmTR2nPMveLPnrpBhWxwWJZsaJ3DtePonZTFmANfUqkR75
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 11] 本轮显存与缓存已彻底清理！
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 14] 收到全局 CID: QmVLBSzytX8DF4AnhDnkoMHtALonsPzhV6iWGHnH9tf4o5，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 14] 阶段 I：协作微调期 (第2/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 14] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 14] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 14] 准备就绪，开始本地微调 (Round 2)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6417, 'grad_norm': 1.5864752531051636, 'learning_rate': 3.307091636218621e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 66.7357, 'train_samples_per_second': 2.398, 'train_steps_per_second': 0.15, 'train_loss': 0.6416545391082764, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 14] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 14] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 14] 上传成功! CID: QmNcTmyvtzRc4YGVdGKfwq5toXaKMyPcgU3dG5EVTPuLEc
-
-📥 [Server] Round 2: Processing 2 replies via IPFS...
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 14] 本轮显存与缓存已彻底清理！
-🔒 [Server] 成功读取混合模型，来自 CID: QmTR2nPMveLPnrpBhWxwWJZsaJ3DtePonZTFmANfUqkR75
-🔒 [Server] 成功读取混合模型，来自 CID: QmNcTmyvtzRc4YGVdGKfwq5toXaKMyPcgU3dG5EVTPuLEc
-
-🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
-✅ [Server] 混合聚合彻底完成！总耗时: 7.94 秒
-🔓 [Server] 阶段 I (第2/5轮)：微调期，跳过 ABE 确权。
-🔓 [Server] 伪装文件直接放行 (Client将直接执行同态解密)...
-☁️ [Server] 正在将模型上传至 IPFS...
-✅ [Server] 上传成功！Global CID: QmQ2j8RrFERrbRHMdzp2ZjmtcypETJWFvYU4J82vuHsubG
-🔗 [Blockchain] 中间态模型 CID 上链存证...
-🔗 [Blockchain] 正在将最新模型 CID 上链存证...
-✅ [Blockchain] 存证成功！交易已被打包进区块 (消耗 Gas: 23156)
-📊 [Server] 自动绘图完成！本轮收敛曲线已更新至: ./results/loss_plots/loss_curve_round_2.png
-
-🛡️ [Server] 轮次 2 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 18] 收到全局 CID: QmQ2j8RrFERrbRHMdzp2ZjmtcypETJWFvYU4J82vuHsubG，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 18] 阶段 I：协作微调期 (第3/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 18] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 18] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 18] 准备就绪，开始本地微调 (Round 3)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6113, 'grad_norm': 1.3681062459945679, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 75.87, 'train_samples_per_second': 2.109, 'train_steps_per_second': 0.132, 'train_loss': 0.6112676620483398, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 18] 已彻底销毁本地明文权重...[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:08,  4.09s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.16s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  2.92s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.08s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:07<01:07,  7.45s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:52,  6.51s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:18<00:42,  6.08s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:26<00:40,  6.70s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:34<00:36,  7.21s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:42<00:29,  7.44s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:49<00:21,  7.15s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:56<00:14,  7.14s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:03<00:07,  7.13s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:10<00:00,  7.26s/it]                                               100%|██████████| 10/10 [01:10<00:00,  7.26s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:11<00:00,  7.26s/it]100%|██████████| 10/10 [01:11<00:00,  7.10s/it]
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[92mINFO [0m:      📊 [Server] Round 3 Aggregated Loss: 0.6099
-[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.6099499999999999}
-[92mINFO [0m:      Global evaluation
-[92mINFO [0m:      	└──> MetricRecord: {}
-[92mINFO [0m:      
-[92mINFO [0m:      [ROUND 4/5]
-[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.15s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.37s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.83s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.96s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<00:59,  6.61s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:14<00:59,  7.39s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:21<00:49,  7.14s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:26<00:38,  6.46s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:34<00:34,  6.97s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:40<00:26,  6.66s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:48<00:20,  6.97s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:55<00:14,  7.18s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:02<00:06,  7.00s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:09<00:00,  6.86s/it]                                               100%|██████████| 10/10 [01:09<00:00,  6.86s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:09<00:00,  6.86s/it]100%|██████████| 10/10 [01:09<00:00,  6.93s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.28s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.53s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.02s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.13s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:08<01:13,  8.13s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:53,  6.63s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:20<00:47,  6.81s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:28<00:42,  7.14s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:35<00:35,  7.15s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:41<00:27,  6.79s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:48<00:20,  6.87s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:55<00:13,  6.74s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:01<00:06,  6.69s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:09<00:00,  6.95s/it]                                               100%|██████████| 10/10 [01:09<00:00,  6.95s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:09<00:00,  6.95s/it]100%|██████████| 10/10 [01:09<00:00,  6.94s/it]
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[92mINFO [0m:      📊 [Server] Round 4 Aggregated Loss: 0.6213
-[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.621299734904271}
-[92mINFO [0m:      Global evaluation
-[92mINFO [0m:      	└──> MetricRecord: {}
-[92mINFO [0m:      
-[92mINFO [0m:      [ROUND 5/5]
-[92mINFO [0m:      configure_train: Sampled 2 nodes (out of 20)
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.21s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.38s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:10<00:00,  3.62s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:10<00:00,  3.54s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<01:01,  6.84s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:13<00:54,  6.87s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:22<00:53,  7.64s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:29<00:45,  7.59s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:37<00:38,  7.70s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:45<00:30,  7.64s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:52<00:22,  7.64s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:59<00:14,  7.26s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:06<00:07,  7.38s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:13<00:00,  7.13s/it]                                               100%|██████████| 10/10 [01:13<00:00,  7.13s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:13<00:00,  7.13s/it]100%|██████████| 10/10 [01:13<00:00,  7.37s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.40s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.44s/it]
-[36m(ClientAppActor pid=1717668)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.36s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.37s/it]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/flowertune_medical/ipfs_handler.py:121: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
-[36m(ClientAppActor pid=1717668)[0m   tar.extractall(path=target_dir)
-
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 18] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 18] 上传成功! CID: Qmej5ZC9te79QRdnaQ15NzrVuNzGf5Pk3onco7Nz5QzEkN
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 18] 本轮显存与缓存已彻底清理！
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 19] 收到全局 CID: QmQ2j8RrFERrbRHMdzp2ZjmtcypETJWFvYU4J82vuHsubG，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 19] 阶段 I：协作微调期 (第3/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 19] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 19] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 19] 准备就绪，开始本地微调 (Round 3)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6086, 'grad_norm': 1.3634591102600098, 'learning_rate': 1.792908363781379e-05, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 71.0242, 'train_samples_per_second': 2.253, 'train_steps_per_second': 0.141, 'train_loss': 0.6085833549499512, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 19] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 19] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 19] 上传成功! CID: QmUJbzEfA53zw4h7at64zzLaGx5EX4fmCEwcdmSsNJwDnX
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 19] 本轮显存与缓存已彻底清理！
-
-📥 [Server] Round 3: Processing 2 replies via IPFS...
-🔒 [Server] 成功读取混合模型，来自 CID: Qmej5ZC9te79QRdnaQ15NzrVuNzGf5Pk3onco7Nz5QzEkN
-🔒 [Server] 成功读取混合模型，来自 CID: QmUJbzEfA53zw4h7at64zzLaGx5EX4fmCEwcdmSsNJwDnX
-
-🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
-✅ [Server] 混合聚合彻底完成！总耗时: 7.80 秒
-🔓 [Server] 阶段 I (第3/5轮)：微调期，跳过 ABE 确权。
-🔓 [Server] 伪装文件直接放行 (Client将直接执行同态解密)...
-☁️ [Server] 正在将模型上传至 IPFS...
-✅ [Server] 上传成功！Global CID: QmZQxoLxMVP73Tmzz38W5aj6vkKvyqxeMpvnC4gEruqZPT
-🔗 [Blockchain] 中间态模型 CID 上链存证...
-🔗 [Blockchain] 正在将最新模型 CID 上链存证...
-✅ [Blockchain] 存证成功！交易已被打包进区块 (消耗 Gas: 23168)
-📊 [Server] 自动绘图完成！本轮收敛曲线已更新至: ./results/loss_plots/loss_curve_round_3.png
-
-🛡️ [Server] 轮次 3 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 6] 收到全局 CID: QmZQxoLxMVP73Tmzz38W5aj6vkKvyqxeMpvnC4gEruqZPT，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 6] 阶段 I：协作微调期 (第4/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 6] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 6] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 6] 准备就绪，开始本地微调 (Round 4)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6204, 'grad_norm': 1.858281135559082, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 69.3429, 'train_samples_per_second': 2.307, 'train_steps_per_second': 0.144, 'train_loss': 0.6204001903533936, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 6] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 6] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 6] 上传成功! CID: QmcJfkE721YntfLVJtG7T4NpnsMKi7opJfEj1Vu2T5DQkV
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 6] 本轮显存与缓存已彻底清理！
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 17] 收到全局 CID: QmZQxoLxMVP73Tmzz38W5aj6vkKvyqxeMpvnC4gEruqZPT，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 17] 阶段 I：协作微调期 (第4/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 17] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 17] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 17] 准备就绪，开始本地微调 (Round 4)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6222, 'grad_norm': 1.7600653171539307, 'learning_rate': 5.6790836378137905e-06, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 69.4487, 'train_samples_per_second': 2.304, 'train_steps_per_second': 0.144, 'train_loss': 0.6221953868865967, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 17] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 17] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 17] 上传成功! CID: QmP8TUXFvWANuKgU4JUiH48DQD15fWsJuj4xkE3xvMVSuY
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 17] 本轮显存与缓存已彻底清理！
-
-📥 [Server] Round 4: Processing 2 replies via IPFS...
-🔒 [Server] 成功读取混合模型，来自 CID: QmcJfkE721YntfLVJtG7T4NpnsMKi7opJfEj1Vu2T5DQkV
-🔒 [Server] 成功读取混合模型，来自 CID: QmP8TUXFvWANuKgU4JUiH48DQD15fWsJuj4xkE3xvMVSuY
-
-🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
-✅ [Server] 混合聚合彻底完成！总耗时: 8.12 秒
-🔓 [Server] 阶段 I (第4/5轮)：微调期，跳过 ABE 确权。
-🔓 [Server] 伪装文件直接放行 (Client将直接执行同态解密)...
-☁️ [Server] 正在将模型上传至 IPFS...
-✅ [Server] 上传成功！Global CID: QmQgVAETt4yM19Lj2GfGKhQ31sVt9cEcPwiAAjkBs2VxT9
-🔗 [Blockchain] 中间态模型 CID 上链存证...
-🔗 [Blockchain] 正在将最新模型 CID 上链存证...
-✅ [Blockchain] 存证成功！交易已被打包进区块 (消耗 Gas: 23168)
-📊 [Server] 自动绘图完成！本轮收敛曲线已更新至: ./results/loss_plots/loss_curve_round_4.png
-
-🛡️ [Server] 轮次 4 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 0] 收到全局 CID: QmQgVAETt4yM19Lj2GfGKhQ31sVt9cEcPwiAAjkBs2VxT9，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 0] 阶段 I：协作微调期 (第5/5轮)。跳过 ABE，直接放行同步！
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 0] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 0] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 0] 准备就绪，开始本地微调 (Round 5)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.5933, 'grad_norm': 1.4536994695663452, 'learning_rate': 1e-06, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 73.734, 'train_samples_per_second': 2.17, 'train_steps_per_second': 0.136, 'train_loss': 0.5932968139648438, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 0] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 0] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 0] 上传成功! CID: QmUWYNkh1XBbUHKDuubrYTBLyBdKLh83c8k4DAS6WzXFts
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 0] 本轮显存与缓存已彻底清理！
-[36m(ClientAppActor pid=1717668)[0m 
-[36m(ClientAppActor pid=1717668)[0m 📥 [Client 8] 收到全局 CID: QmQgVAETt4yM19Lj2GfGKhQ31sVt9cEcPwiAAjkBs2VxT9，从 IPFS 拉取密文...
-[36m(ClientAppActor pid=1717668)[0m 🔓 [Client 8] 阶段 I：协作微调期 (第5/5轮)。跳过 ABE，直接放行同步！[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/datasets/utils/_dill.py:385: DeprecationWarning: co_lnotab is deprecated, use co_lines instead.
-[36m(ClientAppActor pid=1717668)[0m   obj.co_lnotab,  # for < python 3.10 [not counted in args]
-[36m(ClientAppActor pid=1717668)[0m /home/nihonge/20251229/flowertune-llm-medical/.venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py:322: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `SFTTrainer.__init__`. Use `processing_class` instead.
-[36m(ClientAppActor pid=1717668)[0m   super().__init__(
-[36m(ClientAppActor pid=1717668)[0m No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
-[36m(ClientAppActor pid=1717668)[0m   0%|          | 0/10 [00:00<?, ?it/s]
-[36m(ClientAppActor pid=1717668)[0m  10%|█         | 1/10 [00:06<01:00,  6.77s/it]
-[36m(ClientAppActor pid=1717668)[0m  20%|██        | 2/10 [00:15<01:02,  7.81s/it]
-[36m(ClientAppActor pid=1717668)[0m  30%|███       | 3/10 [00:21<00:49,  7.02s/it]
-[36m(ClientAppActor pid=1717668)[0m  40%|████      | 4/10 [00:30<00:46,  7.68s/it]
-[36m(ClientAppActor pid=1717668)[0m  50%|█████     | 5/10 [00:36<00:35,  7.07s/it]
-[36m(ClientAppActor pid=1717668)[0m  60%|██████    | 6/10 [00:43<00:29,  7.35s/it]
-[36m(ClientAppActor pid=1717668)[0m  70%|███████   | 7/10 [00:50<00:21,  7.21s/it]
-[36m(ClientAppActor pid=1717668)[0m  80%|████████  | 8/10 [00:58<00:14,  7.19s/it]
-[36m(ClientAppActor pid=1717668)[0m  90%|█████████ | 9/10 [01:04<00:07,  7.00s/it]
-[36m(ClientAppActor pid=1717668)[0m 100%|██████████| 10/10 [01:13<00:00,  7.48s/it]                                               100%|██████████| 10/10 [01:13<00:00,  7.48s/it]
-[36m(ClientAppActor pid=1717668)[0m                                                100%|██████████| 10/10 [01:13<00:00,  7.48s/it]100%|██████████| 10/10 [01:13<00:00,  7.34s/it]
-[92mINFO [0m:      Communication budget: used 104.05 MB (+0.00 MB this round) / 200,000 MB
-[92mINFO [0m:      📊 [Server] Round 5 Aggregated Loss: 0.6044
-[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 0.6044}
-[92mINFO [0m:      Global evaluation
-[92mINFO [0m:      	└──> MetricRecord: {}
-[92mINFO [0m:      
-[92mINFO [0m:      Strategy execution finished in 1330.75s
-[92mINFO [0m:      
-[92mINFO [0m:      Final results:
-[92mINFO [0m:      
-[92mINFO [0m:      	Global Arrays:
-[92mINFO [0m:      		ArrayRecord (0.000 MB)
-[92mINFO [0m:      	
-[92mINFO [0m:      	Aggregated ClientApp-side Train Metrics:
-[92mINFO [0m:      	{ 1: {'train_loss': '7.1980e-01'},
-[92mINFO [0m:      	  2: {'train_loss': '6.4145e-01'},
-[92mINFO [0m:      	  3: {'train_loss': '6.0995e-01'},
-[92mINFO [0m:      	  4: {'train_loss': '6.2130e-01'},
-[92mINFO [0m:      	  5: {'train_loss': '6.0440e-01'}}
-[92mINFO [0m:      	
-[92mINFO [0m:      	Aggregated ClientApp-side Evaluate Metrics:
-[92mINFO [0m:      	{}
-[92mINFO [0m:      	
-[92mINFO [0m:      	ServerApp-side Evaluate Metrics:
-[92mINFO [0m:      	{0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}}
-[92mINFO [0m:      
-[36m(ClientAppActor pid=1717668)[0m [93mWARNING [0m:   Manually terminating ClientAppActor
-
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 8] 解密授权通过！正在执行同态还原...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 8] 成功吸收全局聚合经验！
-[36m(ClientAppActor pid=1717668)[0m 🚀 [Client 8] 准备就绪，开始本地微调 (Round 5)...
-[36m(ClientAppActor pid=1717668)[0m {'loss': 0.6155, 'grad_norm': 1.513271450996399, 'learning_rate': 1e-06, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m {'train_runtime': 73.415, 'train_samples_per_second': 2.179, 'train_steps_per_second': 0.136, 'train_loss': 0.6154670715332031, 'epoch': 0.09}
-[36m(ClientAppActor pid=1717668)[0m 🗑️ [Client 8] 已彻底销毁本地明文权重...
-[36m(ClientAppActor pid=1717668)[0m ☁️ [Client 8] 正在将密态矩阵上传至 IPFS...
-[36m(ClientAppActor pid=1717668)[0m ✅ [Client 8] 上传成功! CID: QmRFsT1fYfwb7URPJCWMrfk3Rycb26F9PfHXVFQ6D2u2wD
-[36m(ClientAppActor pid=1717668)[0m 🧹 [Client 8] 本轮显存与缓存已彻底清理！
-
-📥 [Server] Round 5: Processing 2 replies via IPFS...
-🔒 [Server] 成功读取混合模型，来自 CID: QmUWYNkh1XBbUHKDuubrYTBLyBdKLh83c8k4DAS6WzXFts
-🔒 [Server] 成功读取混合模型，来自 CID: QmRFsT1fYfwb7URPJCWMrfk3Rycb26F9PfHXVFQ6D2u2wD
-
-🔥 [Server] 启动双核聚合引擎 (FHE盲算 + 明文均值)...
-✅ [Server] 混合聚合彻底完成！总耗时: 7.85 秒
-💎 [Server] 阶段 II (第5/5轮)：结算期！启动最终确权！
-🔐 [Server-Crypto] 正在生成随机 AES-256 密钥并用 ABE 锁定...
-🔐 [Server-Crypto] 正在生成随机 AES-256 密钥锁定全局模型...
-🌳 [Server-Crypto] 构建 ABE 访问策略树: Policy: (Role:Client) AND (Contribution >= 1) for Round 5
-✅ [Server-Crypto] AES 锁定与 ABE 策略封装完成！耗时: 4.687s
-✅ [Server-Crypto] AES 锁定与 ABE 策略封装完成！
-☁️ [Server] 正在将模型上传至 IPFS...
-✅ [Server] 上传成功！Global CID: QmNxZkjSXNT2gFBZ1MLRKcbxjYR6yPNqHwMP4HwxT5pcjX
-💎 [Server] 触发智能合约！正在为 2 个诚实节点发放贡献度并存证...
-🔗 [Blockchain] 正在将最新模型 CID 上链存证...
-✅ [Blockchain] 存证成功！交易已被打包进区块 (消耗 Gas: 23168)
-📊 [Server] 自动绘图完成！本轮收敛曲线已更新至: ./results/loss_plots/loss_curve_round_5.png
-
-🛡️ [Server] 轮次 5 评估阶段。
-🔒 [Server] 全局模型目前处于 FHE 密文状态躺在 IPFS 中。
-🚫 [Server] Server 无私钥，无权解密，已跳过明文保存步骤。
